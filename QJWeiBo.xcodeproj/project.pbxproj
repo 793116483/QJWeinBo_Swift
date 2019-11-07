@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		F239C97A2373C11700AE01BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9792373C11700AE01BC /* AppDelegate.swift */; };
-		F239C97E2373C11700AE01BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C97D2373C11700AE01BC /* ViewController.swift */; };
-		F239C9812373C11700AE01BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F239C97F2373C11700AE01BC /* Main.storyboard */; };
 		F239C9842373C11700AE01BC /* QJWeiBo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F239C9822373C11700AE01BC /* QJWeiBo.xcdatamodeld */; };
 		F239C9862373C11800AE01BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F239C9852373C11800AE01BC /* Assets.xcassets */; };
 		F239C9892373C11800AE01BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F239C9872373C11800AE01BC /* LaunchScreen.storyboard */; };
 		F239C9942373C11900AE01BC /* QJWeiBoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9932373C11900AE01BC /* QJWeiBoTests.swift */; };
 		F239C99F2373C11900AE01BC /* QJWeiBoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C99E2373C11900AE01BC /* QJWeiBoUITests.swift */; };
+		F239C9B52373D1BB00AE01BC /* QJTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9B42373D1BB00AE01BC /* QJTabBarViewController.swift */; };
+		F239C9B72373D1E800AE01BC /* QJHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9B62373D1E800AE01BC /* QJHomeViewController.swift */; };
+		F239C9B92373D20100AE01BC /* QJMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9B82373D20100AE01BC /* QJMessageViewController.swift */; };
+		F239C9BB2373D21000AE01BC /* QJDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9BA2373D21000AE01BC /* QJDiscoverViewController.swift */; };
+		F239C9BD2373D21F00AE01BC /* QJProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9BC2373D21F00AE01BC /* QJProfileViewController.swift */; };
+		F239C9BF2373D27B00AE01BC /* QJNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9BE2373D27B00AE01BC /* QJNavigationViewController.swift */; };
+		F239C9C12373D6D500AE01BC /* QJBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9C02373D6D500AE01BC /* QJBaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +42,6 @@
 /* Begin PBXFileReference section */
 		F239C9762373C11700AE01BC /* QJWeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QJWeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F239C9792373C11700AE01BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F239C97D2373C11700AE01BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F239C9802373C11700AE01BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F239C9832373C11700AE01BC /* QJWeiBo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QJWeiBo.xcdatamodel; sourceTree = "<group>"; };
 		F239C9852373C11800AE01BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F239C9882373C11800AE01BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +52,13 @@
 		F239C99A2373C11900AE01BC /* QJWeiBoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QJWeiBoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F239C99E2373C11900AE01BC /* QJWeiBoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJWeiBoUITests.swift; sourceTree = "<group>"; };
 		F239C9A02373C11900AE01BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F239C9B42373D1BB00AE01BC /* QJTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJTabBarViewController.swift; sourceTree = "<group>"; };
+		F239C9B62373D1E800AE01BC /* QJHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJHomeViewController.swift; sourceTree = "<group>"; };
+		F239C9B82373D20100AE01BC /* QJMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJMessageViewController.swift; sourceTree = "<group>"; };
+		F239C9BA2373D21000AE01BC /* QJDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJDiscoverViewController.swift; sourceTree = "<group>"; };
+		F239C9BC2373D21F00AE01BC /* QJProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJProfileViewController.swift; sourceTree = "<group>"; };
+		F239C9BE2373D27B00AE01BC /* QJNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJNavigationViewController.swift; sourceTree = "<group>"; };
+		F239C9C02373D6D500AE01BC /* QJBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJBaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +109,8 @@
 		F239C9782373C11700AE01BC /* QJWeiBo */ = {
 			isa = PBXGroup;
 			children = (
+				F239C9AC2373CFB900AE01BC /* Classes */,
 				F239C9792373C11700AE01BC /* AppDelegate.swift */,
-				F239C97D2373C11700AE01BC /* ViewController.swift */,
-				F239C97F2373C11700AE01BC /* Main.storyboard */,
 				F239C9852373C11800AE01BC /* Assets.xcassets */,
 				F239C9872373C11800AE01BC /* LaunchScreen.storyboard */,
 				F239C98A2373C11800AE01BC /* Info.plist */,
@@ -126,6 +135,60 @@
 				F239C9A02373C11900AE01BC /* Info.plist */,
 			);
 			path = QJWeiBoUITests;
+			sourceTree = "<group>";
+		};
+		F239C9AC2373CFB900AE01BC /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F239C9B12373CFB900AE01BC /* Main(主要) */,
+				F239C9AD2373CFB900AE01BC /* Home(首页) */,
+				F239C9AE2373CFB900AE01BC /* Message(消息) */,
+				F239C9B02373CFB900AE01BC /* Discover(发现) */,
+				F239C9AF2373CFB900AE01BC /* Profile(我) */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		F239C9AD2373CFB900AE01BC /* Home(首页) */ = {
+			isa = PBXGroup;
+			children = (
+				F239C9B62373D1E800AE01BC /* QJHomeViewController.swift */,
+			);
+			path = "Home(首页)";
+			sourceTree = "<group>";
+		};
+		F239C9AE2373CFB900AE01BC /* Message(消息) */ = {
+			isa = PBXGroup;
+			children = (
+				F239C9B82373D20100AE01BC /* QJMessageViewController.swift */,
+			);
+			path = "Message(消息)";
+			sourceTree = "<group>";
+		};
+		F239C9AF2373CFB900AE01BC /* Profile(我) */ = {
+			isa = PBXGroup;
+			children = (
+				F239C9BC2373D21F00AE01BC /* QJProfileViewController.swift */,
+			);
+			path = "Profile(我)";
+			sourceTree = "<group>";
+		};
+		F239C9B02373CFB900AE01BC /* Discover(发现) */ = {
+			isa = PBXGroup;
+			children = (
+				F239C9BA2373D21000AE01BC /* QJDiscoverViewController.swift */,
+			);
+			path = "Discover(发现)";
+			sourceTree = "<group>";
+		};
+		F239C9B12373CFB900AE01BC /* Main(主要) */ = {
+			isa = PBXGroup;
+			children = (
+				F239C9B42373D1BB00AE01BC /* QJTabBarViewController.swift */,
+				F239C9BE2373D27B00AE01BC /* QJNavigationViewController.swift */,
+				F239C9C02373D6D500AE01BC /* QJBaseViewController.swift */,
+			);
+			path = "Main(主要)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,7 +297,6 @@
 			files = (
 				F239C9892373C11800AE01BC /* LaunchScreen.storyboard in Resources */,
 				F239C9862373C11800AE01BC /* Assets.xcassets in Resources */,
-				F239C9812373C11700AE01BC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +321,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F239C97E2373C11700AE01BC /* ViewController.swift in Sources */,
+				F239C9BB2373D21000AE01BC /* QJDiscoverViewController.swift in Sources */,
+				F239C9BD2373D21F00AE01BC /* QJProfileViewController.swift in Sources */,
+				F239C9C12373D6D500AE01BC /* QJBaseViewController.swift in Sources */,
+				F239C9BF2373D27B00AE01BC /* QJNavigationViewController.swift in Sources */,
+				F239C9B72373D1E800AE01BC /* QJHomeViewController.swift in Sources */,
 				F239C9842373C11700AE01BC /* QJWeiBo.xcdatamodeld in Sources */,
+				F239C9B52373D1BB00AE01BC /* QJTabBarViewController.swift in Sources */,
+				F239C9B92373D20100AE01BC /* QJMessageViewController.swift in Sources */,
 				F239C97A2373C11700AE01BC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,14 +365,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F239C97F2373C11700AE01BC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F239C9802373C11700AE01BC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F239C9872373C11800AE01BC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -437,6 +497,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 46S98ZE7K8;
 				INFOPLIST_FILE = QJWeiBo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -444,7 +505,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yiniu.app.QJWeiBo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -455,6 +516,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 46S98ZE7K8;
 				INFOPLIST_FILE = QJWeiBo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,7 +524,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yiniu.app.QJWeiBo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
