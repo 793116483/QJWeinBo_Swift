@@ -19,8 +19,8 @@ class QJTabBarViewController: UITabBarController {
 }
 
 // MARK: 初始化 tab bar vc
-extension QJTabBarViewController {
-    func initTabBarVc() {
+private extension QJTabBarViewController {
+     func initTabBarVc() {
         // 设置tabBar颜色
         self.tabBar.tintColor = UIColor.orange
         
@@ -35,7 +35,7 @@ extension QJTabBarViewController {
         self.addChildViewController(vc: QJProfileViewController(), title: "我", imageName: "tabbar_profile")
     }
     // 添加子控制器
-    func addChildViewController(vc:UIViewController , title:String , imageName:String) {
+     func addChildViewController(vc:UIViewController , title:String , imageName:String) {
         vc.title = title
         vc.tabBarItem.image = UIImage(named: imageName)
         vc.tabBarItem.selectedImage = UIImage(named: imageName+"_highlighted")
