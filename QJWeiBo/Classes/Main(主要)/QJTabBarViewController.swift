@@ -10,16 +10,29 @@ import UIKit
 
 class QJTabBarViewController: UITabBarController {
 
+    /// 自定义的tabBar,是添加到系统的tabBar做子控件
+    let tabBarView:QJTabBar = QJTabBar()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // 初始化
         self.initTabBarVc()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        for item in self.tabBar.subviews {
+            if item.isKind(of: QJTabBar.self) == false {
+                item.removeFromSuperview()
+            }
+        }
+    }
 }
 
 // MARK: 初始化 tab bar vc
 private extension QJTabBarViewController {
+    /// 初始化
      func initTabBarVc() {
         // 设置tabBar颜色
         self.tabBar.tintColor = UIColor.orange
@@ -33,7 +46,17 @@ private extension QJTabBarViewController {
         self.addChildViewController(vcName: "QJDiscoverViewController", title: "发现", imageName: "tabbar_discover")
         // 添加我的
         self.addChildViewController(vcName: "QJProfileViewController", title: "我", imageName: "tabbar_profile")
+        
+        // 初始化 tabBarView
+         // 防止循环引用
+        self.tabBarView.selectedIndexBlock = {[weak self](index:Int) in
+            QJPublic.Log("index= \(index)")
+            self?.selectedIndex = index
+        }
+        self.tabBarView.frame = self.tabBar.bounds
+        self.tabBar.addSubview(self.tabBarView)
     }
+    
     // 添加子控制器
      func addChildViewController(vcName:String , title:String , imageName:String) {
         
@@ -58,5 +81,8 @@ private extension QJTabBarViewController {
         vc.tabBarItem.selectedImage = UIImage(named: imageName+"_highlighted")
         let nav = QJNavigationViewController(rootViewController: vc)
         self.addChild(nav)
+        
+        // 添加对应的tab bar item
+        self.tabBarView.addItem(title: title, image: imageName, selectImage: imageName+"_highlighted")
     }
 }
