@@ -12,6 +12,7 @@ class QJProfileViewController: QJBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.visitorView?.setUpView("visitordiscover_image_profile", text: "这里是我的页面")
 
         // Do any additional setup after loading the view.
     }

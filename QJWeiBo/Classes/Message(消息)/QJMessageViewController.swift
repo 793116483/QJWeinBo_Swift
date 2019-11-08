@@ -13,6 +13,8 @@ class QJMessageViewController: QJBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.visitorView?.setUpView("visitordiscover_image_message", text: "这里是消息页这里是消息页这里是消息页这里是消息页这里是消息页这里是消息页这里是消息页这里是消息页这里是消息页")
+        
         // Do any additional setup after loading the view.
     }
     

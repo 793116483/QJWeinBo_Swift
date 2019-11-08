@@ -10,14 +10,24 @@ import UIKit
 
 class QJBaseViewController: UIViewController {
 
+    var visitorView:QJVisitorView?
+    var isLogin = false
+    
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-
         self.view.backgroundColor = UIColor.white
-        
-        // Do any additional setup after loading the view.
+
+        isLogin ? super.viewDidLoad() : setUpVisitorView()
     }
     
+    // MARK: 初始化 visitorView
+    private func setUpVisitorView() {
+        self.visitorView = QJVisitorView.visitorView("visitordiscover_feed_image_house", text: "关注一些人，回这里看看有什么惊喜")
+        visitorView?.bgImageView.isHidden = true
+        visitorView?.frame = self.view.bounds
+        // self.view = self.visitorView
+        self.view = self.visitorView
+    }
 
     /*
     // MARK: - Navigation

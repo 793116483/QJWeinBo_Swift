@@ -12,6 +12,7 @@ class QJDiscoverViewController: QJBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.visitorView?.setUpView("visitordiscover_image_message", text: "这里是发现页这里是发现页这里是发现页这里是发现页这里是发现页这里是发现页这里是发现页这里是发现页")
 
         // Do any additional setup after loading the view.
     }

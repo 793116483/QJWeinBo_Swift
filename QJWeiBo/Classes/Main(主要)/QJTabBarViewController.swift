@@ -55,7 +55,7 @@ private extension QJTabBarViewController {
         // 添加我的
         self.addChildViewController(vcName: "QJProfileViewController", title: "我", imageName: "tabbar_profile")
         
-        self.selectedIndex = 2
+        self.selectedIndex = 0
         
         // 初始化 tabBarView
          // 防止循环引用
