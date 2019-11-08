@@ -37,9 +37,6 @@
                     <state key="normal" title="注册" backgroundImage="common_button_white_disable">
                         <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
-                    <connections>
-                        <action selector="registerBtnDidClicked:" destination="4R2-RB-Ym7" eventType="touchUpInside" id="iia-US-mav"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UiP-et-B7O">
                     <rect key="frame" x="246" y="551" width="100" height="40"/>
@@ -50,9 +47,6 @@
                     <state key="normal" title="登录" backgroundImage="common_button_white_disable">
                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
-                    <connections>
-                        <action selector="loginBtnDidClicked:" destination="4R2-RB-Ym7" eventType="touchUpInside" id="QXY-ah-u8r"/>
-                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -76,6 +70,8 @@
             <connections>
                 <outlet property="bgImageView" destination="Qy7-9r-Hcl" id="aHv-Iw-nOQ"/>
                 <outlet property="centerImageView" destination="hVa-AN-K9f" id="Yej-xo-Rr7"/>
+                <outlet property="loginBtn" destination="UiP-et-B7O" id="fCX-LW-enZ"/>
+                <outlet property="registerBtn" destination="hjd-5I-Ekq" id="UGU-qt-I0f"/>
                 <outlet property="textLabel" destination="SIR-Ia-OSr" id="agP-yA-utN"/>
             </connections>
             <point key="canvasLocation" x="150.72463768115944" y="37.5"/>

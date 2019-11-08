@@ -11,9 +11,11 @@ import UIKit
 class QJVisitorView: UIView {
 
     // MARK: 属性
-    @IBOutlet weak var bgImageView: UIImageView!
-    @IBOutlet weak var centerImageView: UIImageView!
-    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak  var bgImageView: UIImageView!
+    @IBOutlet private weak var centerImageView: UIImageView!
+    @IBOutlet private weak var textLabel: UILabel!
+    @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var loginBtn: UIButton!
     
     // MARK:获取visitorView的xib 并设置数据
     class func visitorView(_ centerImageName:String , text hitText: String?) -> QJVisitorView? {
@@ -42,10 +44,5 @@ class QJVisitorView: UIView {
         // 如果切换到其他页面系统认为动画已完成，就会删除动画，要动画一直工作就设置false
         rotationAnimtion.isRemovedOnCompletion = false
         self.bgImageView.layer.add(rotationAnimtion, forKey: "动画标记")
-    }
-    
-    @IBAction func registerBtnDidClicked(_ sender: UIButton) {
-    }
-    @IBAction func loginBtnDidClicked(_ sender: UIButton) {
     }
 }
