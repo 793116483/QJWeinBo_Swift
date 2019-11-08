@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F236D35723754C47009EDECE /* QJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F236D35423754C46009EDECE /* QJButton.swift */; };
+		F236D35823754C47009EDECE /* QJTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F236D35523754C46009EDECE /* QJTabBar.swift */; };
 		F239C97A2373C11700AE01BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9792373C11700AE01BC /* AppDelegate.swift */; };
 		F239C9842373C11700AE01BC /* QJWeiBo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F239C9822373C11700AE01BC /* QJWeiBo.xcdatamodeld */; };
 		F239C9862373C11800AE01BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F239C9852373C11800AE01BC /* Assets.xcassets */; };
@@ -20,8 +22,6 @@
 		F239C9BD2373D21F00AE01BC /* QJProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9BC2373D21F00AE01BC /* QJProfileViewController.swift */; };
 		F239C9BF2373D27B00AE01BC /* QJNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9BE2373D27B00AE01BC /* QJNavigationViewController.swift */; };
 		F239C9C12373D6D500AE01BC /* QJBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9C02373D6D500AE01BC /* QJBaseViewController.swift */; };
-		F239C9C42373F1A800AE01BC /* QJTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9C32373F1A800AE01BC /* QJTabBar.swift */; };
-		F239C9C62373F23B00AE01BC /* QJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9C52373F23B00AE01BC /* QJButton.swift */; };
 		F239C9CA2373F6D100AE01BC /* QJFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9C92373F6D100AE01BC /* QJFrame.swift */; };
 		F239C9CD23745F1200AE01BC /* QJPublic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9CC23745F1200AE01BC /* QJPublic.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F236D35423754C46009EDECE /* QJButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QJButton.swift; sourceTree = "<group>"; };
+		F236D35523754C46009EDECE /* QJTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QJTabBar.swift; sourceTree = "<group>"; };
 		F239C9762373C11700AE01BC /* QJWeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QJWeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F239C9792373C11700AE01BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F239C9832373C11700AE01BC /* QJWeiBo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QJWeiBo.xcdatamodel; sourceTree = "<group>"; };
@@ -63,8 +65,6 @@
 		F239C9BC2373D21F00AE01BC /* QJProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJProfileViewController.swift; sourceTree = "<group>"; };
 		F239C9BE2373D27B00AE01BC /* QJNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJNavigationViewController.swift; sourceTree = "<group>"; };
 		F239C9C02373D6D500AE01BC /* QJBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJBaseViewController.swift; sourceTree = "<group>"; };
-		F239C9C32373F1A800AE01BC /* QJTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJTabBar.swift; sourceTree = "<group>"; };
-		F239C9C52373F23B00AE01BC /* QJButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJButton.swift; sourceTree = "<group>"; };
 		F239C9C92373F6D100AE01BC /* QJFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJFrame.swift; sourceTree = "<group>"; };
 		F239C9CC23745F1200AE01BC /* QJPublic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJPublic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +94,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F236D35323754C46009EDECE /* TabBarView */ = {
+			isa = PBXGroup;
+			children = (
+				F236D35423754C46009EDECE /* QJButton.swift */,
+				F236D35523754C46009EDECE /* QJTabBar.swift */,
+			);
+			path = TabBarView;
+			sourceTree = "<group>";
+		};
+		F236D35623754C47009EDECE /* Visitor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Visitor;
+			sourceTree = "<group>";
+		};
 		F239C96D2373C11700AE01BC = {
 			isa = PBXGroup;
 			children = (
@@ -196,18 +212,10 @@
 				F239C9B42373D1BB00AE01BC /* QJTabBarViewController.swift */,
 				F239C9BE2373D27B00AE01BC /* QJNavigationViewController.swift */,
 				F239C9C02373D6D500AE01BC /* QJBaseViewController.swift */,
-				F239C9C22373F18B00AE01BC /* View */,
+				F236D35323754C46009EDECE /* TabBarView */,
+				F236D35623754C47009EDECE /* Visitor */,
 			);
 			path = "Main(主要)";
-			sourceTree = "<group>";
-		};
-		F239C9C22373F18B00AE01BC /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F239C9C32373F1A800AE01BC /* QJTabBar.swift */,
-				F239C9C52373F23B00AE01BC /* QJButton.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		F239C9C72373F63900AE01BC /* Other */ = {
@@ -367,17 +375,17 @@
 			files = (
 				F239C9BB2373D21000AE01BC /* QJDiscoverViewController.swift in Sources */,
 				F239C9BD2373D21F00AE01BC /* QJProfileViewController.swift in Sources */,
-				F239C9C42373F1A800AE01BC /* QJTabBar.swift in Sources */,
 				F239C9C12373D6D500AE01BC /* QJBaseViewController.swift in Sources */,
 				F239C9BF2373D27B00AE01BC /* QJNavigationViewController.swift in Sources */,
+				F236D35723754C47009EDECE /* QJButton.swift in Sources */,
 				F239C9CD23745F1200AE01BC /* QJPublic.swift in Sources */,
 				F239C9B72373D1E800AE01BC /* QJHomeViewController.swift in Sources */,
 				F239C9CA2373F6D100AE01BC /* QJFrame.swift in Sources */,
 				F239C9842373C11700AE01BC /* QJWeiBo.xcdatamodeld in Sources */,
 				F239C9B52373D1BB00AE01BC /* QJTabBarViewController.swift in Sources */,
+				F236D35823754C47009EDECE /* QJTabBar.swift in Sources */,
 				F239C9B92373D20100AE01BC /* QJMessageViewController.swift in Sources */,
 				F239C97A2373C11700AE01BC /* AppDelegate.swift in Sources */,
-				F239C9C62373F23B00AE01BC /* QJButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

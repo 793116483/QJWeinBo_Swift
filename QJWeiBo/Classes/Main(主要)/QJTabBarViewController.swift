@@ -32,6 +32,14 @@ class QJTabBarViewController: UITabBarController {
 
 // MARK: 初始化 tab bar vc
 private extension QJTabBarViewController {
+    
+    // 当selectedIndex改变了那么tabBarView选中也要改变
+    override internal var selectedIndex: Int {
+        didSet{
+            self.tabBarView.didSelected(for: self.selectedIndex)
+        }
+    }
+    
     /// 初始化
      func initTabBarVc() {
         // 设置tabBar颜色
@@ -46,6 +54,8 @@ private extension QJTabBarViewController {
         self.addChildViewController(vcName: "QJDiscoverViewController", title: "发现", imageName: "tabbar_discover")
         // 添加我的
         self.addChildViewController(vcName: "QJProfileViewController", title: "我", imageName: "tabbar_profile")
+        
+        self.selectedIndex = 2
         
         // 初始化 tabBarView
          // 防止循环引用
@@ -62,12 +72,12 @@ private extension QJTabBarViewController {
         
         // 1.获取命名空间,从info.plist中取命名空间就是项目名QJWeiBo
         guard let nameSpace = Bundle.main.infoDictionary![kCFBundleExecutableKey as String] as? String else {
-            print("未找到命名空间")
+            QJPublic.Log("未找到命名空间")
             return
         }
         // 2.根据字符串获取class
         guard let vcClass = NSClassFromString(nameSpace + "." + vcName) else {
-            print("未找到对应的class")
+            QJPublic.Log("未找到对应的class")
             return
         }
         // 3.对AnyClass转成控制器类型
