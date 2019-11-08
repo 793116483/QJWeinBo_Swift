@@ -21,6 +21,7 @@ class QJTabBar: UITabBar {
         button.set(title: title, image: imageName, selectImage: selectImageName)
         button.set()
         button.addTarget(self, action: #selector(itemDidSelected(item:)), for: .touchDown)
+        button.style = .QJButtonStyleUp
         
         self.addItem(item: button)
     }

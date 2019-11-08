@@ -59,6 +59,13 @@ extension UIView {
             self.size = CGSize(width: self.width, height: newValue)
         }
     }
+    
+    var max_X: CGFloat {
+        return self.x + self.width
+    }
+    var max_Y: CGFloat {
+        return self.y + self.height
+    }
 }
 
 

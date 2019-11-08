@@ -101,8 +101,8 @@
 		F236D35323754C46009EDECE /* TabBarView */ = {
 			isa = PBXGroup;
 			children = (
-				F236D35423754C46009EDECE /* QJButton.swift */,
 				F236D35523754C46009EDECE /* QJTabBar.swift */,
+				F236D35423754C46009EDECE /* QJButton.swift */,
 			);
 			path = TabBarView;
 			sourceTree = "<group>";
