@@ -10,7 +10,7 @@ import UIKit
 
 class QJHomeViewController: QJBaseViewController {
     // titleView 展开弹窗
-    private lazy var navTitlePopVc = QJNavTitlePopVc()
+    private lazy var navTitlePopView = QJNavTitlePopView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,27 +47,40 @@ extension QJHomeViewController {
         self.navigationItem.titleView = titleView
     }
     
-    /// 弹出 or 隐藏 NavTitlePopVc 取决 isShow
-    func showNavTitlePopVc(isShow:Bool) {
-        if isShow {
+    /// 弹出 or 隐藏 NavTitlePopVc 取决 btn.isSelected
+    func showNavTitlePopVc(click btn:QJButton ) {
+        btn.isEnabled = false
+        if btn.isSelected {
             //        self.navTitlePopVc.modalPresentationStyle = .custom
-            self.navTitlePopVc.loadViewIfNeeded()
-            self.view.addSubview(self.navTitlePopVc.view)
-            self.navTitlePopVc.view.width = 150
-            self.navTitlePopVc.view.x = (self.view.width - self.navTitlePopVc.view.width)/2
-            self.navTitlePopVc.view.y = 64 + 22
-            
-            UIView.animate(withDuration: 1) {
-                self.navTitlePopVc.view.height = 200
-            }
+            self.view.addSubview(self.navTitlePopView)
+            self.navTitlePopView.width = 150
+            self.navTitlePopView.x = (self.view.width - self.navTitlePopView.width)/2
+            self.navTitlePopView.y = 64 + 22
+            self.navTitlePopView.clipsToBounds = true
+            self.navTitlePopView.height = 200
+            let animation = QJBasicAnimation(duration: 0.5, keyPath: "transform.scale.y", fromValue: 0.0, toValue: 1.0 , completion: { [weak self] (isFinish) in
+                self?.navTitlePopView.layer.removeAllAnimations()
+                btn.isEnabled = true
+            })
+            // 添加核心动画
+            self.navTitlePopView.layer.add(animation, forKey: "nil")
         }
         else{
-            navTitlePopVc.dismiss(animated: true, completion: nil)
-            UIView.animate(withDuration: 0, animations: {
-                self.navTitlePopVc.view.height = 0
-            }) { (se) in
-                self.navTitlePopVc.view.removeFromSuperview()
-            }
+
+            let animation = QJBasicAnimation(
+                duration: 0.5,
+                keyPath: "transform.scale.y",
+                fromValue: 1.0,
+                toValue: 0.001,  // 0.001 是因为苹果处理边界值时不是很灵
+                
+                completion: { [weak self] (isFinish) in
+                    self?.navTitlePopView.removeFromSuperview()
+                    self?.navTitlePopView.layer.removeAllAnimations()
+                    btn.isEnabled = true
+                }
+            )
+            // 添加核心动画
+            self.navTitlePopView.layer.add(animation, forKey: "nil")
         }
     }
 }
@@ -94,7 +107,7 @@ extension QJHomeViewController {
         
         
         // 弹出一个框
-        showNavTitlePopVc(isShow: titleView.isSelected)
+        showNavTitlePopVc(click: titleView)
     }
     
 }

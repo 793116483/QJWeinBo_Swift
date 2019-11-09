@@ -27,7 +27,8 @@
 		F239C9C12373D6D500AE01BC /* QJBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9C02373D6D500AE01BC /* QJBaseViewController.swift */; };
 		F239C9CA2373F6D100AE01BC /* UIView+QJFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9C92373F6D100AE01BC /* UIView+QJFrame.swift */; };
 		F239C9CD23745F1200AE01BC /* QJPublic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9CC23745F1200AE01BC /* QJPublic.swift */; };
-		F2E5C8482375BC4E001035A5 /* QJNavTitlePopVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E5C8472375BC4D001035A5 /* QJNavTitlePopVc.swift */; };
+		F2CB66A82376B8DD00C2F2B8 /* QJBasicAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CB66A72376B8DD00C2F2B8 /* QJBasicAnimation.swift */; };
+		F2E5C8482375BC4E001035A5 /* QJNavTitlePopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E5C8472375BC4D001035A5 /* QJNavTitlePopView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +75,8 @@
 		F239C9C02373D6D500AE01BC /* QJBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJBaseViewController.swift; sourceTree = "<group>"; };
 		F239C9C92373F6D100AE01BC /* UIView+QJFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+QJFrame.swift"; sourceTree = "<group>"; };
 		F239C9CC23745F1200AE01BC /* QJPublic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJPublic.swift; sourceTree = "<group>"; };
-		F2E5C8472375BC4D001035A5 /* QJNavTitlePopVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJNavTitlePopVc.swift; sourceTree = "<group>"; };
+		F2CB66A72376B8DD00C2F2B8 /* QJBasicAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QJBasicAnimation.swift; sourceTree = "<group>"; };
+		F2E5C8472375BC4D001035A5 /* QJNavTitlePopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJNavTitlePopView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 		F239C9CB23745EE800AE01BC /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				F2CB66A72376B8DD00C2F2B8 /* QJBasicAnimation.swift */,
 				F239C9CC23745F1200AE01BC /* QJPublic.swift */,
 			);
 			path = Public;
@@ -258,7 +261,7 @@
 		F2E5C8462375BC0B001035A5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F2E5C8472375BC4D001035A5 /* QJNavTitlePopVc.swift */,
+				F2E5C8472375BC4D001035A5 /* QJNavTitlePopView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2CB66A82376B8DD00C2F2B8 /* QJBasicAnimation.swift in Sources */,
 				F239C9BB2373D21000AE01BC /* QJDiscoverViewController.swift in Sources */,
 				F239C9BD2373D21F00AE01BC /* QJProfileViewController.swift in Sources */,
 				F239C9C12373D6D500AE01BC /* QJBaseViewController.swift in Sources */,
@@ -408,7 +412,7 @@
 				F239C9B52373D1BB00AE01BC /* QJTabBarViewController.swift in Sources */,
 				F236D35823754C47009EDECE /* QJTabBar.swift in Sources */,
 				F239C9B92373D20100AE01BC /* QJMessageViewController.swift in Sources */,
-				F2E5C8482375BC4E001035A5 /* QJNavTitlePopVc.swift in Sources */,
+				F2E5C8482375BC4E001035A5 /* QJNavTitlePopView.swift in Sources */,
 				F239C97A2373C11700AE01BC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
