@@ -50,12 +50,11 @@ extension QJHomeViewController {
     /// 弹出 or 隐藏 NavTitlePopVc 取决 btn.isSelected
     func showNavTitlePopVc(click btn:QJButton ) {
         btn.isEnabled = false
-        if btn.isSelected {
-            //        self.navTitlePopVc.modalPresentationStyle = .custom
+        if btn.isSelected { // 显示
             self.view.addSubview(self.navTitlePopView)
             self.navTitlePopView.width = 150
             self.navTitlePopView.x = (self.view.width - self.navTitlePopView.width)/2
-            self.navTitlePopView.y = 64 + 22
+            self.navTitlePopView.y = 64 + 22 //  64 + 22 是iphonex的navBar高度
             self.navTitlePopView.clipsToBounds = true
             self.navTitlePopView.height = 200
             let animation = QJBasicAnimation(duration: 0.5, keyPath: "transform.scale.y", fromValue: 0.0, toValue: 1.0 , completion: { [weak self] (isFinish) in
@@ -65,7 +64,7 @@ extension QJHomeViewController {
             // 添加核心动画
             self.navTitlePopView.layer.add(animation, forKey: "nil")
         }
-        else{
+        else{ // 隐藏
 
             let animation = QJBasicAnimation(
                 duration: 0.5,
