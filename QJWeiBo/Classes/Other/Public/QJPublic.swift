@@ -11,7 +11,7 @@ import UIKit
 class QJPublic: NSObject {
     /// 自定义打印方法
     // 全局函数
-    class func Log(_ messages:Any... , fileName:String = (#file as NSString).lastPathComponent , function:String = #function,line:Int = #line) {
+    class func Log(_ messages:Any?... , fileName:String = (#file as NSString).lastPathComponent , function:String = #function,line:Int = #line) {
     //        #file
     //        #function
     //        #line
