@@ -26,6 +26,10 @@ class QJBasicAnimation : CABasicAnimation  {
         self.toValue = toValue
         self.completion = completion
         self.delegate = self
+        
+        // MARK: 设置动画完成后，不移除，不回退到原先状态(解决完成动画后回到原先的样子)
+        self.isRemovedOnCompletion = false
+        self.fillMode = CAMediaTimingFillMode.forwards
     }
     
 }
