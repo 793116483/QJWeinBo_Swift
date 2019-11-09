@@ -18,7 +18,7 @@ class QJTabBar: UITabBar {
     /// 设置文字 与 图片
     func addItem(title:String? , image imageName:String , selectImage selectImageName:String){
         let button = QJButton(type: .custom)
-        button.set(title: title, image: imageName, selectImage: selectImageName)
+        button.set(title: title, image: imageName, highlighted: selectImageName, selected: selectImageName)
         button.set()
         button.addTarget(self, action: #selector(itemDidSelected(item:)), for: .touchDown)
         button.style = .QJButtonStyleUp

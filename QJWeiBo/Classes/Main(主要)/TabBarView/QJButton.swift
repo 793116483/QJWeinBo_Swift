@@ -38,9 +38,15 @@ class QJButton: UIButton {
         
         self.titleLabel?.textAlignment = .center
         self.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        self.setTitleColor(UIColor.gray, for: .normal)
         self.imageView?.contentMode = .scaleAspectFit
     }
     
+    init(style:QJButtonStyle) {
+        self.style = .QJButtonStyleSystem
+        self.init()
+        self.style = style
+    }
     
 }
 
@@ -48,14 +54,15 @@ class QJButton: UIButton {
 extension QJButton {
     
     /// 设置文字 与 图片
-    func set(title:String? , image imageName:String , selectImage selectImageName:String){
+    func set(title:String? , image imageName:String , highlighted imageName2:String , selected imageName3:String = ""){
         
         self.setTitle(title, for: .normal)
         self.setTitle(title, for: .selected)
         self.setImage(UIImage(named: imageName), for: .normal)
-        self.setImage(UIImage(named: selectImageName), for: .selected)
-        self.setImage(UIImage(named: selectImageName), for: .highlighted)
+        self.setImage(UIImage(named: imageName2), for: .highlighted)
+        self.setImage(UIImage(named: imageName3), for: .selected)
     }
+    
     /// 设置文字的字体大小与颜色
     func set(titleFont:UIFont = UIFont.systemFont(ofSize: 14) , titleColor:UIColor = UIColor.gray , selectedTitleColor:UIColor = UIColor.orange) {
         self.setTitleColor(titleColor, for: .normal)
@@ -81,6 +88,8 @@ extension QJButton {
             self.titleLabel?.frame = CGRect(x: 0, y: self.imageView!.height+space, width: self.width, height: titleH)
         }
         else { // 图片在右
+            
+            self.titleLabel?.sizeToFit()
             
             let space:CGFloat = 2
             let titleW = self.titleLabel?.width ?? 0

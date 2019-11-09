@@ -43,7 +43,6 @@ extension QJBaseViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .plain, target: self, action: #selector(loginAction))
 
     }
-    
 }
 
 // MARK: 监听点击事件

@@ -12,6 +12,12 @@ class QJTabBarViewController: UITabBarController {
 
     /// 自定义的tabBar,是添加到系统的tabBar做子控件
     let tabBarView:QJTabBar = QJTabBar()
+    // 当selectedIndex改变了那么tabBarView选中也要改变
+    override var selectedIndex: Int {
+        didSet{
+            self.tabBarView.didSelected(for: self.selectedIndex)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +38,6 @@ class QJTabBarViewController: UITabBarController {
 
 // MARK: 初始化 tab bar vc
 private extension QJTabBarViewController {
-    
-    // 当selectedIndex改变了那么tabBarView选中也要改变
-    override internal var selectedIndex: Int {
-        didSet{
-            self.tabBarView.didSelected(for: self.selectedIndex)
-        }
-    }
     
     /// 初始化
      func initTabBarVc() {
@@ -67,7 +66,7 @@ private extension QJTabBarViewController {
         self.tabBar.addSubview(self.tabBarView)
     }
     
-    // 添加子控制器
+    /// 添加子控制器 与 tab bar item
      func addChildViewController(vcName:String , title:String , imageName:String) {
         
         // 1.获取命名空间,从info.plist中取命名空间就是项目名QJWeiBo
@@ -92,7 +91,7 @@ private extension QJTabBarViewController {
         let nav = QJNavigationViewController(rootViewController: vc)
         self.addChild(nav)
         
-        // 添加对应的tab bar item
+        // 添加控制器对应的tab bar item
         self.tabBarView.addItem(title: title, image: imageName, selectImage: imageName+"_highlighted")
     }
 }
