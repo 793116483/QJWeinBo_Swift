@@ -1,0 +1,6 @@
+framework module Pods_QJWeiBo_QJWeiBoUITests {
+  umbrella header "Pods-QJWeiBo-QJWeiBoUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
