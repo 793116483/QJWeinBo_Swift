@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,7 @@
 		F239C9C12373D6D500AE01BC /* QJBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9C02373D6D500AE01BC /* QJBaseViewController.swift */; };
 		F239C9CA2373F6D100AE01BC /* UIView+QJFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9C92373F6D100AE01BC /* UIView+QJFrame.swift */; };
 		F239C9CD23745F1200AE01BC /* QJPublic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9CC23745F1200AE01BC /* QJPublic.swift */; };
+		F257FA9A2376FD3A00637380 /* QJHTTPSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F257FA992376FD3A00637380 /* QJHTTPSessionManager.swift */; };
 		F2CB66A82376B8DD00C2F2B8 /* QJBasicAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CB66A72376B8DD00C2F2B8 /* QJBasicAnimation.swift */; };
 		F2E5C8482375BC4E001035A5 /* QJNavTitlePopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E5C8472375BC4D001035A5 /* QJNavTitlePopView.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		F239C9C02373D6D500AE01BC /* QJBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJBaseViewController.swift; sourceTree = "<group>"; };
 		F239C9C92373F6D100AE01BC /* UIView+QJFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+QJFrame.swift"; sourceTree = "<group>"; };
 		F239C9CC23745F1200AE01BC /* QJPublic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJPublic.swift; sourceTree = "<group>"; };
+		F257FA992376FD3A00637380 /* QJHTTPSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJHTTPSessionManager.swift; sourceTree = "<group>"; };
 		F2CB66A72376B8DD00C2F2B8 /* QJBasicAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QJBasicAnimation.swift; sourceTree = "<group>"; };
 		F2E5C8472375BC4D001035A5 /* QJNavTitlePopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJNavTitlePopView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,7 +141,6 @@
 				3ABE95F3AFE9E153D3E50389 /* Pods-QJWeiBoTests.debug.xcconfig */,
 				159A183001B59372BDDBE8B3 /* Pods-QJWeiBoTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -231,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				F239C9B62373D1E800AE01BC /* QJHomeViewController.swift */,
+				F257FA992376FD3A00637380 /* QJHTTPSessionManager.swift */,
 				F2E5C8462375BC0B001035A5 /* View */,
 			);
 			path = "Home(首页)";
@@ -553,6 +555,7 @@
 				F239C9BF2373D27B00AE01BC /* QJNavigationViewController.swift in Sources */,
 				F236D35A23754D66009EDECE /* QJVisitorView.swift in Sources */,
 				F236D35723754C47009EDECE /* QJButton.swift in Sources */,
+				F257FA9A2376FD3A00637380 /* QJHTTPSessionManager.swift in Sources */,
 				F236D3622375A3FF009EDECE /* UIBarButtonItem+QJExtension.swift in Sources */,
 				F239C9CD23745F1200AE01BC /* QJPublic.swift in Sources */,
 				F239C9B72373D1E800AE01BC /* QJHomeViewController.swift in Sources */,
