@@ -8,6 +8,7 @@
 
 import UIKit
 import Masonry
+import SDWebImage
 
 
 class QJLoginSeccessWelcomeVc: QJBaseViewController {
@@ -27,8 +28,6 @@ class QJLoginSeccessWelcomeVc: QJBaseViewController {
         super.viewDidLoad()
         
         setUI()
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,7 +45,9 @@ class QJLoginSeccessWelcomeVc: QJBaseViewController {
 
 // MARK: 设置UI
 extension QJLoginSeccessWelcomeVc {
+    /// 初始化UI
     private func setUI() {
+        // 添加子控件
         self.view.addSubview(self.bgImageView)
         self.view.addSubview(self.iconImageView)
         self.view.addSubview(self.hintLabel)
@@ -68,13 +69,12 @@ extension QJLoginSeccessWelcomeVc {
             make?.centerX.equalTo()(self.view.mas_centerX)
             make?.bottom.equalTo()(self.hintLabel.mas_top)?.offset()(-20)
         }
+        
+        /// 设置头象
+        if let avatar_large = QJUserInfoModel.userInfo?.avatar_large {
+            self.iconImageView.sd_setImage(with: URL(string: avatar_large), completed: nil)
+        }
     }
-    
-    /// 设置头象
-    func set(iconName:String)  {
-        
-        
-        
-    }
+
 }
 
