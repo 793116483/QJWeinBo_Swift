@@ -69,9 +69,12 @@ extension QJUserInfoModel {
             self.userInfo_tmp
         }
         set{
+            self.userInfo_tmp = newValue
             guard let userInfo = newValue else {
+                try? FileManager.default.removeItem(atPath: self.userInfoPath)
                 return
             }
+            
             NSKeyedArchiver.archiveRootObject(userInfo, toFile: userInfoPath)
         }
     }

@@ -14,7 +14,13 @@ import SDWebImage
 class QJLoginSeccessWelcomeVc: QJBaseViewController {
 
     private let bgImageView = UIImageView(image: UIImage(named: "ad_background"))
-    private let iconImageView = UIImageView(image: UIImage(named: "avatar_default_big"))
+    private let iconImageView : UIImageView = {
+       let imageV = UIImageView(image: UIImage(named: "avatar_default_big"))
+        imageV.layer.cornerRadius = 85.0 / 2
+        imageV.clipsToBounds = true
+        
+        return imageV
+    }()
     private let hintLabel:UILabel = {
         let hintLabel = UILabel()
         hintLabel.text = "欢迎回来"
@@ -33,11 +39,15 @@ class QJLoginSeccessWelcomeVc: QJBaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // Damping : 阻力系数
-        UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 2, initialSpringVelocity: 10, options: [], animations: {
-            self.iconImageView.y = 100
-        }) { (isComp) in
-            
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(0.5 * 1000000000))) {
+            // Damping : 阻力系数
+            UIView.animate(withDuration: 1.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: [], animations: {
+                self.iconImageView.y = 200
+                self.hintLabel.y = 200 + self.iconImageView.height + 20
+            }) { (isComp) in
+                // 显示完动画后直接显示主页面
+                UIApplication.shared.keyWindow?.rootViewController = QJTabBarViewController()
+            }
         }
     }
 }

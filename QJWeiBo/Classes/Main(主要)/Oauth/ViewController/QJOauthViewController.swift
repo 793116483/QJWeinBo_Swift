@@ -75,7 +75,11 @@ private extension QJOauthViewController {
         QJOauthNetworkTool.loadUserInfo(token: token, seccess: { (userInfo) in
             Log(userInfo?.tokenInfo?.expires_date)
             
+            // 归档用户数据
             QJUserInfoModel.userInfo = userInfo
+            
+            // 显示 欢迎界面
+            self.showWelcomeVc()
             
         }) { (error) in
             Log(error)
@@ -95,7 +99,14 @@ private extension QJOauthViewController {
         self.title = "登录界面"
     }
     
-    // QJOauthNetworkTool
+    /// 显示 欢迎界面
+    func showWelcomeVc() {
+        // 先将当前控制器关掉
+        self.dismiss(animated: false) {
+            // 显示 欢迎界面
+            UIApplication.shared.keyWindow?.rootViewController = QJLoginSeccessWelcomeVc()
+        }
+    }
 }
 
 // MARK: 点击事件监听
