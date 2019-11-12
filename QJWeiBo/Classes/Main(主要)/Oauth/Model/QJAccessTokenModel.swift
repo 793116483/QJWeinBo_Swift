@@ -15,14 +15,15 @@ class QJAccessTokenModel: NSObject , NSCoding{
     /// token的无效时间，从获取到后开始算，时间戳
     var expires_in:TimeInterval = 0
     /// 过期日期
-    lazy var expires_date : NSDate = {
+    var expires_date : NSDate {
         NSDate(timeIntervalSinceNow: self.expires_in)
-    }()
+    }
     /// 授权用户的UID
     var uid:String?
     
     /// 字典 转 模型
     init(dic:[String:Any]?) {
+        super.init()
         guard let dic = dic else {
             return
         }

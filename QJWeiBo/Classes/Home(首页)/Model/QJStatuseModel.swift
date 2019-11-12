@@ -1,0 +1,124 @@
+//
+//  QJStatuseModel.swift
+//  QJWeiBo
+//
+//  Created by 瞿杰 on 2019/11/12.
+//  Copyright © 2019 yiniu. All rights reserved.
+//  微博模型
+
+import UIKit
+import MJExtension
+
+/// 每条微博模型
+class QJStatuseModel: NSObject {
+
+    // MARK: 属性
+    /// 创建时间
+    var created_at :String? {
+        didSet{
+            // created_at = "Tue Nov 01 20:44:08 +0800 2019"
+            // 处理 创建时间显示文字
+            guard let date = Date.date(from: created_at , format: "EEE MM dd HH:mm:ss Z yyyy") else {
+                return
+            }
+            created_at_show = date.showTextSinceNow()
+        }
+    }
+    var created_at_show :String = ""
+    /// 微博来源
+    var source :String?
+    /// 微博正文
+    var text :String?
+    /// 微博正文
+    var mid :String?
+    /// 发微博的用户信息
+    var user:QJUserModel?
+    
+    
+    // MARK: 方法
+    
+    class func model(with dic:[String:Any]) -> QJStatuseModel{
+        
+        let model = QJStatuseModel()
+        
+        model.created_at = dic["created_at"] as? String
+        model.source = dic["source"] as? String
+        model.text = dic["text"] as? String
+        model.mid = dic["mid"] as? String
+        model.user = QJUserModel.model(dic: dic["user"] as! [String:Any])
+        
+        // 处理 source
+        model.setUpSource()
+        
+        return model
+    }
+ 
+    /// 处理 source
+     func setUpSource() {
+        
+        // 处理 source "<a href=\"http://app.weibo.com/t/feed/1sxHP2\" rel=\"nofollow\">专业版微博</a>"
+        guard let source = source else {
+            return
+        }
+        guard source.contains("</a>") == true else {
+            return
+        }
+        let loc = (source as NSString).range(of: ">").location + 1
+        let length = (source as NSString).range(of: "</a").location - loc
+        self.source = (source as NSString).substring(with: NSRange(location: loc, length: length))
+    }
+    
+}
+
+
+/// 每条微博的用户信息 模型
+class QJUserModel: NSObject {
+    // MARK: 属性
+    /// 用户头象
+    var profile_image_url :String?
+    /// 用户名
+    var screen_name :String?
+    /// 认证类型
+    var verified_type: Int = -1 {
+        didSet{
+            switch verified_type {
+            case 0:
+                verifiedImage = UIImage(named: "avatar_vip")
+            case 2,3,5:
+                verifiedImage = UIImage(named: "avatar_enterprise_vip")
+            case 220:
+                verifiedImage = UIImage(named: "avatar_grassroot")
+            default:
+                verifiedImage = nil
+            }
+        }
+    }
+    var verifiedImage: UIImage? // 是 verified_type 另一种类型提取
+    /// 会员等级 mbrank 等价 vip
+    var mbrank : Int = 0 {
+        didSet{
+            if mbrank > 0 && mbrank < 7 {
+                vipImage = UIImage(named: "common_icon_membership_level\(mbrank)")
+            }
+            else{
+                vipImage = nil
+            }
+        }
+    }
+    var vipImage: UIImage?  // 是 mbrank 另一种类型提取
+    
+    class func model(dic:[String:Any]) -> QJUserModel{
+        let model = QJUserModel()
+        
+        model.profile_image_url = dic["profile_image_url"] as? String
+        model.screen_name = dic["screen_name"] as? String
+        model.verified_type = dic["verified_type"] as! Int
+        model.mbrank = dic["mbrank"] as! Int
+        
+        return model
+    }
+    
+}
+
+
+

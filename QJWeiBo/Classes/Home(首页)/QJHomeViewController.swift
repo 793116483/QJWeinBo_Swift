@@ -11,19 +11,54 @@ import UIKit
 class QJHomeViewController: QJBaseViewController {
     // titleView 展开弹窗
     private lazy var navTitlePopView = QJNavTitlePopView()
+    private lazy var tableView:UITableView = {
+        let tableView = UITableView()
+        tableView.register(NSClassFromString("QJHomeTableViewCell"), forCellReuseIdentifier: "QJHomeTableViewCell")
+        
+        return tableView
+    }()
+    private lazy var statuses:[QJStatuseModel] = [QJStatuseModel]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       setUpUI()
+        setUpUI()
         
-        
+        // 下载数据
+        loadStatuses()
     }
 
 }
 
+// MARK: 获取网络数据
+extension QJHomeViewController{
+    /// 加载首页微博数据
+    private func  loadStatuses(){
+        guard let access_token = QJUserInfoModel.userInfo?.tokenInfo?.access_token else{
+            return
+        }
+        let urlStr = "https://api.weibo.com/2/statuses/home_timeline.json"
+        let parameters = ["access_token":access_token]
+        QJHTTPSessionManager.get(URLString: urlStr, parameters: parameters, success: { (objc) in
+            
+            let statuses:[[String:Any]] = objc?["statuses"] as! [[String : Any]]
+            Log(statuses)
+            
+            for item in statuses {
+                let statuse = QJStatuseModel.model(with: item)
+                self.statuses.append(statuse)
+            }
+            self.tableView.reloadData()
+            
+        }) { (error) in
+            Log(error)
+        }
+    }
+}
+
 // MARK: 设置UI
-extension QJHomeViewController {
+private extension QJHomeViewController {
     func setUpUI() {
         self.visitorView?.addRotationAnimtion()
         self.visitorView?.bgImageView.isHidden = false
@@ -31,6 +66,16 @@ extension QJHomeViewController {
         // 如果已经登录了
         if QJUserInfoModel.isLogin {
             setNavBar()
+            
+            // 添加 tableView
+            self.view.addSubview(self.tableView)
+            self.tableView.dataSource = self
+            tableView.mas_makeConstraints {[weak self] (make) in
+                make?.top.equalTo()(self?.view)
+                make?.bottom.equalTo()(self?.view)
+                make?.left.equalTo()(self?.view)
+                make?.right.equalTo()(self?.view)
+            }
         }
     }
     /// 设置导航栏
@@ -109,5 +154,26 @@ extension QJHomeViewController {
         // 弹出一个框
         showNavTitlePopVc(click: titleView)
     }
+    
+}
+
+
+// MARK: UITableViewDataSource
+extension QJHomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.statuses.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell:QJHomeTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "QJHomeTableViewCell") as? QJHomeTableViewCell
+        if cell == nil {
+            cell = QJHomeTableViewCell(style:.default, reuseIdentifier: "QJHomeTableViewCell")
+        }
+        let statuse:QJStatuseModel = self.statuses[indexPath.row]
+        cell?.statuse = statuse ;
+        
+        return cell!
+    }
+    
     
 }

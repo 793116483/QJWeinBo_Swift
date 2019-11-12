@@ -17,6 +17,10 @@
 		F20349A82378015A0087A90C /* QJUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20349A72378015A0087A90C /* QJUserInfoModel.swift */; };
 		F22D849F237A898000E5A910 /* QJOauthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D849E237A898000E5A910 /* QJOauthViewController.swift */; };
 		F22D84A1237A89EE00E5A910 /* QJLoginSeccessWelcomeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D84A0237A89EE00E5A910 /* QJLoginSeccessWelcomeVc.swift */; };
+		F22D84A4237AB16900E5A910 /* QJStatuseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D84A3237AB16900E5A910 /* QJStatuseModel.swift */; };
+		F22D84A7237AB6C700E5A910 /* QJHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D84A5237AB6C700E5A910 /* QJHomeTableViewCell.swift */; };
+		F22D84A8237AB6C700E5A910 /* QJHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F22D84A6237AB6C700E5A910 /* QJHomeTableViewCell.xib */; };
+		F22D84AA237AF3A200E5A910 /* NSDate+QJExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D84A9237AF3A200E5A910 /* NSDate+QJExtension.swift */; };
 		F236D35723754C47009EDECE /* QJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F236D35423754C46009EDECE /* QJButton.swift */; };
 		F236D35823754C47009EDECE /* QJTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F236D35523754C46009EDECE /* QJTabBar.swift */; };
 		F236D35A23754D66009EDECE /* QJVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F236D35923754D66009EDECE /* QJVisitorView.swift */; };
@@ -75,6 +79,10 @@
 		F20349A72378015A0087A90C /* QJUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJUserInfoModel.swift; sourceTree = "<group>"; };
 		F22D849E237A898000E5A910 /* QJOauthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QJOauthViewController.swift; sourceTree = "<group>"; };
 		F22D84A0237A89EE00E5A910 /* QJLoginSeccessWelcomeVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJLoginSeccessWelcomeVc.swift; sourceTree = "<group>"; };
+		F22D84A3237AB16900E5A910 /* QJStatuseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJStatuseModel.swift; sourceTree = "<group>"; };
+		F22D84A5237AB6C700E5A910 /* QJHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJHomeTableViewCell.swift; sourceTree = "<group>"; };
+		F22D84A6237AB6C700E5A910 /* QJHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QJHomeTableViewCell.xib; sourceTree = "<group>"; };
+		F22D84A9237AF3A200E5A910 /* NSDate+QJExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+QJExtension.swift"; sourceTree = "<group>"; };
 		F236D35423754C46009EDECE /* QJButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QJButton.swift; sourceTree = "<group>"; };
 		F236D35523754C46009EDECE /* QJTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QJTabBar.swift; sourceTree = "<group>"; };
 		F236D35923754D66009EDECE /* QJVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJVisitorView.swift; sourceTree = "<group>"; };
@@ -184,6 +192,14 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		F22D84A2237AB14A00E5A910 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F22D84A3237AB16900E5A910 /* QJStatuseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F236D35323754C46009EDECE /* TabBarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +289,7 @@
 			children = (
 				F239C9B62373D1E800AE01BC /* QJHomeViewController.swift */,
 				F2E5C8462375BC0B001035A5 /* View */,
+				F22D84A2237AB14A00E5A910 /* Model */,
 			);
 			path = "Home(首页)";
 			sourceTree = "<group>";
@@ -328,6 +345,7 @@
 			children = (
 				F236D3612375A3FF009EDECE /* UIBarButtonItem+QJExtension.swift */,
 				F239C9C92373F6D100AE01BC /* UIView+QJFrame.swift */,
+				F22D84A9237AF3A200E5A910 /* NSDate+QJExtension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -347,6 +365,8 @@
 			isa = PBXGroup;
 			children = (
 				F2E5C8472375BC4D001035A5 /* QJNavTitlePopView.swift */,
+				F22D84A5237AB6C700E5A910 /* QJHomeTableViewCell.swift */,
+				F22D84A6237AB6C700E5A910 /* QJHomeTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -463,6 +483,7 @@
 				F239C9892373C11800AE01BC /* LaunchScreen.storyboard in Resources */,
 				F239C9862373C11800AE01BC /* Assets.xcassets in Resources */,
 				F236D35C23754D86009EDECE /* QJVisitorView.xib in Resources */,
+				F22D84A8237AB6C700E5A910 /* QJHomeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,6 +616,7 @@
 				F22D84A1237A89EE00E5A910 /* QJLoginSeccessWelcomeVc.swift in Sources */,
 				F239C9BB2373D21000AE01BC /* QJDiscoverViewController.swift in Sources */,
 				F239C9BD2373D21F00AE01BC /* QJProfileViewController.swift in Sources */,
+				F22D84A7237AB6C700E5A910 /* QJHomeTableViewCell.swift in Sources */,
 				F239C9C12373D6D500AE01BC /* QJBaseViewController.swift in Sources */,
 				F239C9BF2373D27B00AE01BC /* QJNavigationViewController.swift in Sources */,
 				F236D35A23754D66009EDECE /* QJVisitorView.swift in Sources */,
@@ -611,9 +633,11 @@
 				F236D35823754C47009EDECE /* QJTabBar.swift in Sources */,
 				F239C9B92373D20100AE01BC /* QJMessageViewController.swift in Sources */,
 				F22D849F237A898000E5A910 /* QJOauthViewController.swift in Sources */,
+				F22D84AA237AF3A200E5A910 /* NSDate+QJExtension.swift in Sources */,
 				F20349A12377E9290087A90C /* QJOauthNetworkTool.swift in Sources */,
 				F2E5C8482375BC4E001035A5 /* QJNavTitlePopView.swift in Sources */,
 				F239C97A2373C11700AE01BC /* AppDelegate.swift in Sources */,
+				F22D84A4237AB16900E5A910 /* QJStatuseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
