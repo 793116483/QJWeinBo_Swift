@@ -16,6 +16,7 @@ class QJHomeViewController: QJBaseViewController {
         super.viewDidLoad()
 
        setUpUI()
+        
     }
     
 
@@ -28,9 +29,8 @@ extension QJHomeViewController {
         self.visitorView?.addRotationAnimtion()
         self.visitorView?.bgImageView.isHidden = false
         
-//        self.isLogin = true
         // 如果已经登录了
-        if self.isLogin {
+        if QJUserInfoModel.isLogin {
             setNavBar()
         }
     }
@@ -42,7 +42,7 @@ extension QJHomeViewController {
         
         // 设置 titleView
         let titleView = QJButton(style: .QJButtonStyleRight)
-        titleView.set(title: "我的账号名", image: "navigationbar_arrow_up", highlighted: "", selected: "navigationbar_arrow_down")
+        titleView.set(title: QJUserInfoModel.userInfo?.screen_name, image: "navigationbar_arrow_up", highlighted: "", selected: "navigationbar_arrow_down")
         titleView.addTarget(self, action: #selector(titleViewDidClicked), for: .touchUpInside)
         self.navigationItem.titleView = titleView
     }
@@ -51,10 +51,11 @@ extension QJHomeViewController {
     func showNavTitlePopVc(click btn:QJButton ) {
         btn.isEnabled = false
         if btn.isSelected { // 显示
+            
             self.view.addSubview(self.navTitlePopView)
             self.navTitlePopView.width = 150
             self.navTitlePopView.x = (self.view.width - self.navTitlePopView.width)/2
-            self.navTitlePopView.y = 64 + 22 //  64 + 22 是iphonex的navBar高度
+            self.navTitlePopView.y = self.view.safeAreaInsets.top //  self.view.safeAreaInsets.top 是所有机形的navBar高度 
             self.navTitlePopView.clipsToBounds = true
             self.navTitlePopView.height = 200
             let animation = QJBasicAnimation(duration: 0.5, keyPath: "transform.scale.y", fromValue: 0.0, toValue: 1.0 , completion: { [weak self] (isFinish) in

@@ -11,12 +11,14 @@ import UIKit
 class QJBaseViewController: UIViewController {
 
     var visitorView:QJVisitorView?
-    var isLogin = false
     
-    
+    override func loadView() {
+        super.loadView()
+        
+    }
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.white
-        isLogin ? super.viewDidLoad() : setUpVisitorView()
+        QJUserInfoModel.isLogin ? super.viewDidLoad() : setUpVisitorView()
     }
     
 }

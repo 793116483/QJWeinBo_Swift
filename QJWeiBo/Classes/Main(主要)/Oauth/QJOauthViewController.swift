@@ -74,6 +74,9 @@ private extension QJOauthViewController {
         
         QJOauthNetworkTool.loadUserInfo(token: token, seccess: { (userInfo) in
             Log(userInfo?.tokenInfo?.expires_date)
+            
+            QJUserInfoModel.userInfo = userInfo
+            
         }) { (error) in
             Log(error)
         }
