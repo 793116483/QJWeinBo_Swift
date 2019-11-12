@@ -23,7 +23,8 @@ class QJLoginSeccessWelcomeVc: QJBaseViewController {
     }()
     private let hintLabel:UILabel = {
         let hintLabel = UILabel()
-        hintLabel.text = "欢迎回来"
+        let name:String = QJUserInfoModel.userInfo?.screen_name ?? ""
+        hintLabel.text = "\(String(name))欢迎回来"
         hintLabel.textColor = UIColor.gray
         hintLabel.textAlignment = .center
         
@@ -39,7 +40,7 @@ class QJLoginSeccessWelcomeVc: QJBaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(0.5 * 1000000000))) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(1 * 1000000000))) {
             // Damping : 阻力系数
             UIView.animate(withDuration: 1.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5, options: [], animations: {
                 self.iconImageView.y = 200
