@@ -28,7 +28,7 @@ extension QJHomeViewController {
         self.visitorView?.addRotationAnimtion()
         self.visitorView?.bgImageView.isHidden = false
         
-        self.isLogin = true
+//        self.isLogin = true
         // 如果已经登录了
         if self.isLogin {
             setNavBar()
@@ -88,11 +88,11 @@ extension QJHomeViewController {
 extension QJHomeViewController {
     /// 导航兰左侧按钮被点击
     @objc func navBarLeftItemDidClickd(){
-        QJPublic.Log("首页导航兰左侧按钮被点击")
+        Log("首页导航兰左侧按钮被点击")
     }
     /// 导航兰右侧按钮被点击
     @objc func navBarRightItemDidClickd(){
-        QJPublic.Log("首页导航兰右侧按钮被点击")
+        Log("首页导航兰右侧按钮被点击")
     }
     /// navBar.titleView 被点击
     @objc func titleViewDidClicked() {

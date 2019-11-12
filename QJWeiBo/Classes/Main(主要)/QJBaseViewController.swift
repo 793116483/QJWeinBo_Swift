@@ -49,10 +49,14 @@ extension QJBaseViewController {
 extension QJBaseViewController {
     /// 注册事件
     @objc func registerAction() {
-        QJPublic.Log("注册")
+        Log("注册")
     }
     /// 登录事件
     @objc func loginAction() {
-        QJPublic.Log("登录")
+        Log("登录")
+        
+        let oauthVc = QJOauthViewController()
+        let nav = QJNavigationViewController(rootViewController: oauthVc)
+        self.present(nav, animated: true, completion: nil)
     }
 }

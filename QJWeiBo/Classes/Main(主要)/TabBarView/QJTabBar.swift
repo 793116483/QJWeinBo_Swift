@@ -32,7 +32,7 @@ class QJTabBar: UITabBar {
     }
     func didSelected(for index:Int) {
         guard self.items_.count > index else {
-            QJPublic.Log("tabBar上未找到对应的index")
+            Log("tabBar上未找到对应的index")
             return
         }
         self.itemDidSelected(item: self.items_[index])

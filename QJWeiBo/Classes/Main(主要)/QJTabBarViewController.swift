@@ -59,7 +59,7 @@ private extension QJTabBarViewController {
         // 初始化 tabBarView
          // 防止循环引用
         self.tabBarView.selectedIndexBlock = {[weak self](index:Int) in
-            QJPublic.Log("index= \(index)")
+            Log("index= \(index)")
             self?.selectedIndex = index
         }
         self.tabBarView.frame = self.tabBar.bounds
@@ -71,12 +71,12 @@ private extension QJTabBarViewController {
         
         // 1.获取命名空间,从info.plist中取命名空间就是项目名QJWeiBo
         guard let nameSpace = Bundle.main.infoDictionary![kCFBundleExecutableKey as String] as? String else {
-            QJPublic.Log("未找到命名空间")
+            Log("未找到命名空间")
             return
         }
         // 2.根据字符串获取class
         guard let vcClass = NSClassFromString(nameSpace + "." + vcName) else {
-            QJPublic.Log("未找到对应的class")
+            Log("未找到对应的class")
             return
         }
         // 3.对AnyClass转成控制器类型
