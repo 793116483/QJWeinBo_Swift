@@ -9,6 +9,8 @@ target 'QJWeiBo' do
 
   pod 'AFNetworking'
   pod 'SVProgressHUD'
+  pod 'Masonry'
+  pod 'MJExtension'
 
   target 'QJWeiBoTests' do
     inherit! :search_paths

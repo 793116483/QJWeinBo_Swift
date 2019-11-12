@@ -14,21 +14,29 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - Masonry (1.1.0)
+  - MJExtension (3.2.1)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - AFNetworking
+  - Masonry
+  - MJExtension
   - SVProgressHUD
 
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - Masonry
+    - MJExtension
     - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 2d31323831cb5106ceed2d92e22594fb210abfb1
+PODFILE CHECKSUM: 1aaf34ed5e8dd0f5ff076506b7e13b9be61bb139
 
 COCOAPODS: 1.8.3
