@@ -18,15 +18,30 @@ class QJNavigationViewController: UINavigationController {
         
     }
     
+   
+}
 
-    /*
-    // MARK: - Navigation
+extension QJNavigationViewController{
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+           
+           self.tabBarController?.tabBar.isHidden = self.viewControllers.count > 0
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+           super.pushViewController(viewController, animated: animated)
+       }
+       override func popViewController(animated: Bool) -> UIViewController? {
+           
+           self.tabBarController?.tabBar.isHidden = self.viewControllers.count > 2
+           return super.popViewController(animated: animated)
+       }
+       override func popToRootViewController(animated: Bool) -> [UIViewController]? {
+           self.tabBarController?.tabBar.isHidden = false
+           return super.popToRootViewController(animated: animated)
+       }
+       override func popToViewController(_ viewController: UIViewController, animated: Bool) -> [UIViewController]? {
+           let vcs:[UIViewController]? = super.popToViewController(viewController, animated: animated)
+           
+           self.tabBarController?.tabBar.isHidden = self.viewControllers.count > 2
+           
+           return vcs
+       }
 }

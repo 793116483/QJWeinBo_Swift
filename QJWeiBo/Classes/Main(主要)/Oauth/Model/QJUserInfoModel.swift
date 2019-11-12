@@ -38,7 +38,7 @@ class QJUserInfoModel: NSObject , NSCoding{
     
 }
 
-// MARK: 登录的用户信息 , 归档 & 解档 &
+// MARK: 登录的用户信息 , 归档 & 解档 &等
 extension QJUserInfoModel {
     /// 用户是否登录 或 是否登录已经过期
     static var isLogin:Bool {

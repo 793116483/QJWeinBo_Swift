@@ -22,6 +22,7 @@ class QJTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hidesBottomBarWhenPushed = true
         // 初始化
         self.initTabBarVc()
     }

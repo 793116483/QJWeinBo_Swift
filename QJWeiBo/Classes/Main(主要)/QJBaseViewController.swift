@@ -12,10 +12,6 @@ class QJBaseViewController: UIViewController {
 
     var visitorView:QJVisitorView?
     
-    override func loadView() {
-        super.loadView()
-        
-    }
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.white
         QJUserInfoModel.isLogin ? super.viewDidLoad() : setUpVisitorView()

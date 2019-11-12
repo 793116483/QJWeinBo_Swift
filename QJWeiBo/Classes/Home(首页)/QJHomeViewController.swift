@@ -17,9 +17,12 @@ class QJHomeViewController: QJBaseViewController {
 
        setUpUI()
         
+        
     }
     
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.navigationController?.pushViewController(QJLoginSeccessWelcomeVc(), animated: true)
+    }
 
 }
 
@@ -79,6 +82,7 @@ extension QJHomeViewController {
                     btn.isEnabled = true
                 }
             )
+            
             // 添加核心动画
             self.navTitlePopView.layer.add(animation, forKey: "nil")
         }

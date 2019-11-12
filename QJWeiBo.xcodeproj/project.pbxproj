@@ -11,11 +11,12 @@
 		B1608D988C4D1C3F9E644FFD /* Pods_QJWeiBo_QJWeiBoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251B87FA0A2948CF7FE7B398 /* Pods_QJWeiBo_QJWeiBoUITests.framework */; };
 		DF5226D5DDDBF5E1B417F781 /* Pods_QJWeiBo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2724199FFE1F820AE5FFA6E4 /* Pods_QJWeiBo.framework */; };
 		F203499A2377C07F0087A90C /* QJHTTPSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20349992377C07E0087A90C /* QJHTTPSessionManager.swift */; };
-		F203499D2377C1330087A90C /* QJOauthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203499C2377C1330087A90C /* QJOauthViewController.swift */; };
 		F203499F2377D0610087A90C /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203499E2377D0610087A90C /* Common.swift */; };
 		F20349A12377E9290087A90C /* QJOauthNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20349A02377E9290087A90C /* QJOauthNetworkTool.swift */; };
 		F20349A42377F46C0087A90C /* QJAccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20349A32377F46C0087A90C /* QJAccessTokenModel.swift */; };
 		F20349A82378015A0087A90C /* QJUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20349A72378015A0087A90C /* QJUserInfoModel.swift */; };
+		F22D849F237A898000E5A910 /* QJOauthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D849E237A898000E5A910 /* QJOauthViewController.swift */; };
+		F22D84A1237A89EE00E5A910 /* QJLoginSeccessWelcomeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22D84A0237A89EE00E5A910 /* QJLoginSeccessWelcomeVc.swift */; };
 		F236D35723754C47009EDECE /* QJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F236D35423754C46009EDECE /* QJButton.swift */; };
 		F236D35823754C47009EDECE /* QJTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F236D35523754C46009EDECE /* QJTabBar.swift */; };
 		F236D35A23754D66009EDECE /* QJVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F236D35923754D66009EDECE /* QJVisitorView.swift */; };
@@ -68,11 +69,12 @@
 		835BA772A431673F870A6F00 /* Pods-QJWeiBo-QJWeiBoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QJWeiBo-QJWeiBoUITests.debug.xcconfig"; path = "Target Support Files/Pods-QJWeiBo-QJWeiBoUITests/Pods-QJWeiBo-QJWeiBoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C28A3ADF48DB3ACD12917AF4 /* Pods-QJWeiBo-QJWeiBoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QJWeiBo-QJWeiBoUITests.release.xcconfig"; path = "Target Support Files/Pods-QJWeiBo-QJWeiBoUITests/Pods-QJWeiBo-QJWeiBoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F20349992377C07E0087A90C /* QJHTTPSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QJHTTPSessionManager.swift; sourceTree = "<group>"; };
-		F203499C2377C1330087A90C /* QJOauthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJOauthViewController.swift; sourceTree = "<group>"; };
 		F203499E2377D0610087A90C /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		F20349A02377E9290087A90C /* QJOauthNetworkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJOauthNetworkTool.swift; sourceTree = "<group>"; };
 		F20349A32377F46C0087A90C /* QJAccessTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJAccessTokenModel.swift; sourceTree = "<group>"; };
 		F20349A72378015A0087A90C /* QJUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJUserInfoModel.swift; sourceTree = "<group>"; };
+		F22D849E237A898000E5A910 /* QJOauthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QJOauthViewController.swift; sourceTree = "<group>"; };
+		F22D84A0237A89EE00E5A910 /* QJLoginSeccessWelcomeVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJLoginSeccessWelcomeVc.swift; sourceTree = "<group>"; };
 		F236D35423754C46009EDECE /* QJButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QJButton.swift; sourceTree = "<group>"; };
 		F236D35523754C46009EDECE /* QJTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QJTabBar.swift; sourceTree = "<group>"; };
 		F236D35923754D66009EDECE /* QJVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJVisitorView.swift; sourceTree = "<group>"; };
@@ -157,8 +159,8 @@
 		F203499B2377C0F30087A90C /* Oauth */ = {
 			isa = PBXGroup;
 			children = (
+				F22D849D237A898000E5A910 /* ViewController */,
 				F20349A22377F4200087A90C /* Model */,
-				F203499C2377C1330087A90C /* QJOauthViewController.swift */,
 				F20349A02377E9290087A90C /* QJOauthNetworkTool.swift */,
 			);
 			path = Oauth;
@@ -171,6 +173,15 @@
 				F20349A72378015A0087A90C /* QJUserInfoModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F22D849D237A898000E5A910 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F22D849E237A898000E5A910 /* QJOauthViewController.swift */,
+				F22D84A0237A89EE00E5A910 /* QJLoginSeccessWelcomeVc.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		F236D35323754C46009EDECE /* TabBarView */ = {
@@ -581,6 +592,7 @@
 			files = (
 				F2CB66A82376B8DD00C2F2B8 /* QJBasicAnimation.swift in Sources */,
 				F20349A42377F46C0087A90C /* QJAccessTokenModel.swift in Sources */,
+				F22D84A1237A89EE00E5A910 /* QJLoginSeccessWelcomeVc.swift in Sources */,
 				F239C9BB2373D21000AE01BC /* QJDiscoverViewController.swift in Sources */,
 				F239C9BD2373D21F00AE01BC /* QJProfileViewController.swift in Sources */,
 				F239C9C12373D6D500AE01BC /* QJBaseViewController.swift in Sources */,
@@ -598,8 +610,8 @@
 				F239C9B52373D1BB00AE01BC /* QJTabBarViewController.swift in Sources */,
 				F236D35823754C47009EDECE /* QJTabBar.swift in Sources */,
 				F239C9B92373D20100AE01BC /* QJMessageViewController.swift in Sources */,
+				F22D849F237A898000E5A910 /* QJOauthViewController.swift in Sources */,
 				F20349A12377E9290087A90C /* QJOauthNetworkTool.swift in Sources */,
-				F203499D2377C1330087A90C /* QJOauthViewController.swift in Sources */,
 				F2E5C8482375BC4E001035A5 /* QJNavTitlePopView.swift in Sources */,
 				F239C97A2373C11700AE01BC /* AppDelegate.swift in Sources */,
 			);
