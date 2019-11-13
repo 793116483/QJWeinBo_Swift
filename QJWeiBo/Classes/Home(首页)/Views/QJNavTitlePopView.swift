@@ -4,7 +4,7 @@
 //
 //  Created by 瞿杰 on 2019/11/8.
 //  Copyright © 2019 yiniu. All rights reserved.
-//
+//  首页 titleView 被点击展开的 view
 
 import UIKit
 
