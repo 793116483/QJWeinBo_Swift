@@ -33,6 +33,13 @@ class QJStatuseModel: NSObject {
     var mid :String?
     /// 发微博的用户信息
     var user:QJUserModel?
+    /// 转发数
+    var reposts_count:Int = 0
+    /// 评论数
+    var comments_count:Int = 0
+    /// 点赞数
+    var attitudes_count:Int = 0
+
     
     
     // MARK: 方法
@@ -45,16 +52,19 @@ class QJStatuseModel: NSObject {
         model.source = dic["source"] as? String
         model.text = dic["text"] as? String
         model.mid = dic["mid"] as? String
+        model.reposts_count = dic["reposts_count"] as? Int ?? 0
+        model.comments_count = dic["comments_count"] as? Int ?? 0
+        model.attitudes_count = dic["attitudes_count"] as? Int ?? 0
         model.user = QJUserModel.model(dic: dic["user"] as! [String:Any])
         
         // 处理 source
-        model.setUpSource()
+        model.dealSource()
         
         return model
     }
  
     /// 处理 source
-     func setUpSource() {
+     func dealSource() {
         
         // 处理 source "<a href=\"http://app.weibo.com/t/feed/1sxHP2\" rel=\"nofollow\">专业版微博</a>"
         guard let source = source else {
@@ -65,7 +75,8 @@ class QJStatuseModel: NSObject {
         }
         let loc = (source as NSString).range(of: ">").location + 1
         let length = (source as NSString).range(of: "</a").location - loc
-        self.source = (source as NSString).substring(with: NSRange(location: loc, length: length))
+        let subStr = (source as NSString).substring(with: NSRange(location: loc, length: length))
+        self.source = "来自 \(subStr)"
     }
     
 }

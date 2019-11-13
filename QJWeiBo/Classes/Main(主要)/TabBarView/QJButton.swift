@@ -75,6 +75,7 @@ extension QJButton {
         super.layoutSubviews()
         // 如果是系统类型就不用重新布局
         guard self.style != .QJButtonStyleSystem else {
+            self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
             return
         }
         

@@ -9,16 +9,27 @@
 import UIKit
 
 class QJHomeViewController: QJBaseViewController {
+    // MARK: 属性
     // titleView 展开弹窗
     private lazy var navTitlePopView = QJNavTitlePopView()
     private lazy var tableView:UITableView = {
         let tableView = UITableView()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.estimatedRowHeight = 200
+        tableView.separatorStyle = .none
+//        tableView.showsVerticalScrollIndicator = false
         tableView.register(NSClassFromString("QJHomeTableViewCell"), forCellReuseIdentifier: "QJHomeTableViewCell")
         
         return tableView
     }()
+    /// 微博数据
     private lazy var statuses:[QJStatuseModel] = [QJStatuseModel]()
+    /// 临时cell用来计算高度的
+    private let cellTmp = QJHomeTableViewCell()
     
+    
+    // MARK: 方法
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +80,6 @@ private extension QJHomeViewController {
             
             // 添加 tableView
             self.view.addSubview(self.tableView)
-            self.tableView.dataSource = self
             tableView.mas_makeConstraints {[weak self] (make) in
                 make?.top.equalTo()(self?.view)
                 make?.bottom.equalTo()(self?.view)
@@ -159,21 +169,18 @@ extension QJHomeViewController {
 
 
 // MARK: UITableViewDataSource
-extension QJHomeViewController: UITableViewDataSource {
+extension QJHomeViewController: UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.statuses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell:QJHomeTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "QJHomeTableViewCell") as? QJHomeTableViewCell
-        if cell == nil {
-            cell = QJHomeTableViewCell(style:.default, reuseIdentifier: "QJHomeTableViewCell")
-        }
-        let statuse:QJStatuseModel = self.statuses[indexPath.row]
-        cell?.statuse = statuse ;
-        
-        return cell!
+
+        return QJHomeTableViewCell.cell(with: tableView, statuse: self.statuses[indexPath.row])
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        cellTmp.statuse = self.statuses[indexPath.row]
+        return cellTmp.cellHeight
+    }
 }
