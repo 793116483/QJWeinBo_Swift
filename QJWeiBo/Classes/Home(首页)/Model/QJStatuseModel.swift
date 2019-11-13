@@ -13,7 +13,7 @@ import MJExtension
 class QJStatuseModel: NSObject {
 
     // MARK: 属性
-    /// 创建时间
+    /// 创建时间 , 使用 created_at_show 属性
     var created_at :String? {
         didSet{
             // created_at = "Tue Nov 01 20:44:08 +0800 2019"
@@ -24,15 +24,19 @@ class QJStatuseModel: NSObject {
             created_at_show = date.showTextSinceNow()
         }
     }
+    /// 创建时间 的显示内容
     var created_at_show :String = ""
+    
     /// 微博来源
     var source :String?
     /// 微博正文
     var text :String?
-    /// 微博正文
+    /// 微博MID
     var mid :String?
     /// 发微博的用户信息
     var user:QJUserModel?
+    /// 微博配图的 url字典数组，格式: [[thumbnail_pic: urlString]]
+    var pic_urls:[[String:String]]?
     /// 转发数
     var reposts_count:Int = 0
     /// 评论数
@@ -48,14 +52,15 @@ class QJStatuseModel: NSObject {
         
         let model = QJStatuseModel()
         
+        model.user = QJUserModel.model(dic: dic["user"] as! [String:Any])
         model.created_at = dic["created_at"] as? String
         model.source = dic["source"] as? String
         model.text = dic["text"] as? String
         model.mid = dic["mid"] as? String
+        model.pic_urls = dic["pic_urls"] as? [[String:String]]
         model.reposts_count = dic["reposts_count"] as? Int ?? 0
         model.comments_count = dic["comments_count"] as? Int ?? 0
         model.attitudes_count = dic["attitudes_count"] as? Int ?? 0
-        model.user = QJUserModel.model(dic: dic["user"] as! [String:Any])
         
         // 处理 source
         model.dealSource()
@@ -89,7 +94,8 @@ class QJUserModel: NSObject {
     var profile_image_url :String?
     /// 用户名
     var screen_name :String?
-    /// 认证类型
+    
+    /// 认证类型 ， 使用 verifiedImage 属性
     var verified_type: Int = -1 {
         didSet{
             switch verified_type {
@@ -104,8 +110,10 @@ class QJUserModel: NSObject {
             }
         }
     }
-    var verifiedImage: UIImage? // 是 verified_type 另一种类型提取
-    /// 会员等级 mbrank 等价 vip
+    /// 是 verified_type 认证类型 对应的图片
+    var verifiedImage: UIImage?
+    
+    /// 会员等级 , 使用 vipImage 属性
     var mbrank : Int = 0 {
         didSet{
             if mbrank > 0 && mbrank < 7 {
@@ -116,8 +124,10 @@ class QJUserModel: NSObject {
             }
         }
     }
-    var vipImage: UIImage?  // 是 mbrank 另一种类型提取
+    /// 是 mbrank 等级对应的图片
+    var vipImage: UIImage?
     
+    /// 创建模型对象类方法
     class func model(dic:[String:Any]) -> QJUserModel{
         let model = QJUserModel()
         

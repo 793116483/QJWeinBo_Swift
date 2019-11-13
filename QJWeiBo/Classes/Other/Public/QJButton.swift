@@ -73,6 +73,7 @@ extension QJButton {
     /// 布局子控件
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         // 如果是系统类型就不用重新布局
         guard self.style != .QJButtonStyleSystem else {
             self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
@@ -88,7 +89,7 @@ extension QJButton {
             self.imageView?.frame = CGRect(x: 0, y: space, width: self.width, height: self.height - 3*space - titleH)
             self.titleLabel?.frame = CGRect(x: 0, y: self.imageView!.height+space, width: self.width, height: titleH)
         }
-        else { // 图片在右
+        else if self.style == .QJButtonStyleRight { // 图片在右侧
             
             self.titleLabel?.sizeToFit()
             

@@ -15,7 +15,7 @@ class QJTabBarViewController: UITabBarController {
     // 当selectedIndex改变了那么tabBarView选中也要改变
     override var selectedIndex: Int {
         didSet{
-            self.tabBarView.didSelected(for: self.selectedIndex)
+            self.tabBarView.selectedIndex = self.selectedIndex
         }
     }
     

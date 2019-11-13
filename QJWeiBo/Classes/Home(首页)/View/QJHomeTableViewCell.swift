@@ -85,7 +85,7 @@ class QJHomeTableViewCell: UITableViewCell {
         }
     }
     
-    /// 间隔
+    /// 用于布局的 间隔
     private let space:CGFloat = 15
     /// cell高度
     var cellHeight:CGFloat = 0
