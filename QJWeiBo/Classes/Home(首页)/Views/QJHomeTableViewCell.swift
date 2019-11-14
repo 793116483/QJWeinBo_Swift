@@ -28,6 +28,7 @@ class QJHomeCellBottomView: UIView {
 
 
 class QJHomeTableViewCell: UITableViewCell {
+    // MARK: 属性
     /// 用户头象
     private var iconImageView:UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "avatar_default_small"))
@@ -90,7 +91,7 @@ class QJHomeTableViewCell: UITableViewCell {
     /// cell高度
     var cellHeight:CGFloat = 0
     
-    
+    // MARK: 方法
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         

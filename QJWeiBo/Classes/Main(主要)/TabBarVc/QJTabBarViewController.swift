@@ -11,7 +11,7 @@ import UIKit
 class QJTabBarViewController: UITabBarController {
 
     /// 自定义的tabBar,是添加到系统的tabBar做子控件
-    let tabBarView:QJTabBar = QJTabBar()
+    let tabBarView = QJTabBar()
     // 当selectedIndex改变了那么tabBarView选中也要改变
     override var selectedIndex: Int {
         didSet{
@@ -37,14 +37,11 @@ class QJTabBarViewController: UITabBarController {
     }
 }
 
-// MARK: 初始化 tab bar vc
+// MARK: UI 相关
 private extension QJTabBarViewController {
     
     /// 初始化
      func initTabBarVc() {
-        // 设置tabBar颜色
-        self.tabBar.tintColor = UIColor.orange
-        
         // Do any additional setup after loading the view.
         // 添加首页
         self.addChildViewController(vcName: "QJHomeViewController", title: "首页", imageName: "tabbar_home")
@@ -59,11 +56,13 @@ private extension QJTabBarViewController {
         
         // 初始化 tabBarView
          // 防止循环引用
-        self.tabBarView.selectedIndexBlock = {[weak self](index:Int) in
-            Log("index= \(index)")
-            self?.selectedIndex = index
-        }
+//        self.tabBarView.selectedIndexBlock = {[weak self](index:Int) in
+//            Log("index= \(index)")
+//            self?.selectedIndex = index
+//        }
+               
         self.tabBarView.frame = self.tabBar.bounds
+        tabBarView.delegate = self
         self.tabBar.addSubview(self.tabBarView)
     }
     
@@ -94,5 +93,14 @@ private extension QJTabBarViewController {
         
         // 添加控制器对应的tab bar item
         self.tabBarView.addItem(title: title, image: imageName, selectImage: imageName+"_highlighted")
+    }
+}
+
+// MARK: QJTabBarDelegate
+extension QJTabBarViewController : QJTabBarDelegate {
+    
+    func tabBar(tabBar: QJTabBar, didSelect index: Int) {
+        
+        self.selectedIndex = index
     }
 }
