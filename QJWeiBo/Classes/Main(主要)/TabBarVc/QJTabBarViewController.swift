@@ -12,6 +12,7 @@ class QJTabBarViewController: UITabBarController {
 
     /// 自定义的tabBar,是添加到系统的tabBar做子控件
     let tabBarView = QJTabBar()
+    
     // 当selectedIndex改变了那么tabBarView选中也要改变
     override var selectedIndex: Int {
         didSet{
@@ -55,14 +56,8 @@ private extension QJTabBarViewController {
         self.selectedIndex = 0
         
         // 初始化 tabBarView
-         // 防止循环引用
-//        self.tabBarView.selectedIndexBlock = {[weak self](index:Int) in
-//            Log("index= \(index)")
-//            self?.selectedIndex = index
-//        }
-               
         self.tabBarView.frame = self.tabBar.bounds
-        tabBarView.delegate = self
+        self.tabBarView.delegate = self
         self.tabBar.addSubview(self.tabBarView)
     }
     
