@@ -7,7 +7,7 @@
 //  常量
 
 // MARK: 授权常量
-let kAppKey_Oauth = "1505372190"
-let kAppSecret_Oauth = "ca3d22221f1e8a043ff9fd197b962355"
+let kAppKey_Oauth = "2588460720"
+let kAppSecret_Oauth = "c311284503bc1c1b5055cb01417a24f6"
 let kRedirectUrl_Oauth = "http://www.baidu.com"
 

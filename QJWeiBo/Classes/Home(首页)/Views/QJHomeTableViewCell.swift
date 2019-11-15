@@ -8,28 +8,10 @@
 
 import UIKit
 
-class QJHomeCellBottomView: UIView {
-    @IBOutlet weak var repostsBtn: UIButton!
-    @IBOutlet weak var commentsBtn: UIButton!
-    @IBOutlet weak var attitudesBtn: UIButton!
-    
-    func setUIData(statuse:QJStatuseModel?) {
-        guard let statuse = statuse  else {
-            return
-        }
-        let repostsText = statuse.reposts_count == 0 ? "转发":"转发(\(statuse.reposts_count))"
-        let commentsText = statuse.comments_count == 0 ? "评论":"评论(\(statuse.comments_count))"
-        let attitudesText = statuse.attitudes_count == 0 ? "点赞":"点赞(\(statuse.attitudes_count))"
-        repostsBtn.setTitle(repostsText, for: .normal)
-        commentsBtn.setTitle(commentsText, for: .normal)
-        attitudesBtn.setTitle(attitudesText, for: .normal)
-    }
-}
-
-
 class QJHomeTableViewCell: UITableViewCell {
     // MARK: 属性
     /// 用户头象
+    
     private var iconImageView:UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "avatar_default_small"))
         imageView.layer.cornerRadius = 20
@@ -73,19 +55,24 @@ class QJHomeTableViewCell: UITableViewCell {
         contentLabel.textColor = UIColor.black
         return contentLabel
     }()
+    /// 图片展示
+    lazy private var pictrueView:QJPictureCollectionView = {
+        let maxWith = UIScreen.main.bounds.width - space * 2
+        return QJPictureCollectionView.pictureCollectionView(maxWidth: maxWith)
+    }()
     /// 底部 views
     private var bottomView: QJHomeCellBottomView = {
-        let bottomView = Bundle.main.loadNibNamed("HomeCellBottomView", owner: nil, options: nil)?.first as? QJHomeCellBottomView
+        let bottomView = Bundle.main.loadNibNamed("QJHomeCellBottomView", owner: nil, options: nil)?.first as? QJHomeCellBottomView
         return bottomView!
     }()
-    
     /// 一条微博数据
     var statuse:QJStatuseModel? {
         didSet{
+            setUIData()
+            // 设置完数据后就计算高度
             cellHeight = calculateCellHeight()
         }
     }
-    
     /// 用于布局的 间隔
     private let space:CGFloat = 15
     /// cell高度
@@ -118,7 +105,6 @@ class QJHomeTableViewCell: UITableViewCell {
         
         // 设置数据
         cell?.statuse = statuse
-        cell?.setUIData()
 
         return cell!
     }
@@ -135,6 +121,7 @@ private extension QJHomeTableViewCell {
         contentView.addSubview(createdTimeLabel)
         contentView.addSubview(sourceLabel)
         contentView.addSubview(contentTextLabel)
+        contentView.addSubview(pictrueView)
         contentView.addSubview(bottomView)
         
         iconImageView.mas_makeConstraints {[weak self] (make) in
@@ -168,6 +155,11 @@ private extension QJHomeTableViewCell {
             make?.right.equalTo()(self?.contentView)?.offset()(-space)
             make?.top.equalTo()(self?.iconImageView.mas_bottom)?.offset()(space)
         }
+        pictrueView.mas_remakeConstraints {[weak self] (make) in
+            make?.left.equalTo()(self?.contentView)?.offset()(space)
+            make?.top.equalTo()(self?.contentTextLabel.mas_bottom)?.offset()(space)
+            make?.size.equalTo()(CGSize.zero)
+        }
         bottomView.mas_makeConstraints {[weak self] (make) in
             make?.left.equalTo()(self?.contentView)
             make?.right.equalTo()(self?.contentView)
@@ -181,13 +173,19 @@ private extension QJHomeTableViewCell {
         iconImageView.sd_setImage(with: URL(string: statuse?.user?.profile_image_url ?? ""), completed: nil)
         verifiedImageView.image = statuse?.user?.verifiedImage
         userNameLabel.text = statuse?.user?.screen_name
+        userNameLabel.textColor = vipImageView.image != nil ? .orange : .black
         vipImageView.image = statuse?.user?.vipImage
         createdTimeLabel.text = statuse?.created_at_show
         sourceLabel.text = statuse?.source
         contentTextLabel.text = statuse?.text
+        pictrueView.pictureUrls = statuse?.pic_URLs
         bottomView.setUIData(statuse: statuse)
         
-        userNameLabel.textColor = vipImageView.image != nil ? .orange : .black
+        pictrueView.mas_remakeConstraints {[weak self] (make) in
+            make?.left.equalTo()(self?.contentView)?.offset()(space)
+            make?.top.equalTo()(self?.contentTextLabel.mas_bottom)?.offset()(space)
+            make?.size.equalTo()(pictrueView.collectionViewSize())
+        }
     }
     
 }
@@ -195,10 +193,37 @@ private extension QJHomeTableViewCell {
 // MARK: 工具方法
 extension QJHomeTableViewCell {
     func calculateCellHeight() -> CGFloat {
-        let iconMaxY:CGFloat = space + 40
         let maxWidth:CGFloat = UIScreen.main.bounds.width - space * 2
-        let textSize = ((statuse?.text ?? "") as NSString).size(maxWidth: maxWidth, textFont:contentTextLabel.font)
+
+        let iconH:CGFloat = space + 40
+                
+        var textH = ((statuse?.text ?? "") as NSString).size(maxWidth: maxWidth, textFont:contentTextLabel.font).height
+        textH += (textH > 0 ? space : 0)
         
-        return iconMaxY + space + textSize.height + space + 55
+        var pictrueViewH = pictrueView.collectionViewSize().height
+        pictrueViewH += (pictrueViewH > 0 ? space : 0)
+        
+        let bottomH:CGFloat = space + 55
+        return iconH + textH + pictrueViewH + bottomH
+    }
+}
+
+// MARK: QJHomeCellBottomView
+class QJHomeCellBottomView: UIView {
+    @IBOutlet weak var repostsBtn: UIButton!
+    @IBOutlet weak var commentsBtn: UIButton!
+    @IBOutlet weak var attitudesBtn: UIButton!
+    
+    func setUIData(statuse:QJStatuseModel?) {
+        guard let statuse = statuse  else {
+            return
+        }
+        
+        let repostsText = statuse.reposts_count == 0 ? "转发":"转发(\(statuse.reposts_count))"
+        let commentsText = statuse.comments_count == 0 ? "评论":"评论(\(statuse.comments_count))"
+        let attitudesText = statuse.attitudes_count == 0 ? "点赞":"点赞(\(statuse.attitudes_count))"
+        repostsBtn.setTitle(repostsText, for: .normal)
+        commentsBtn.setTitle(commentsText, for: .normal)
+        attitudesBtn.setTitle(attitudesText, for: .normal)
     }
 }

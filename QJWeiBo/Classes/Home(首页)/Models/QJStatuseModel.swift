@@ -35,8 +35,30 @@ class QJStatuseModel: NSObject {
     var mid :String?
     /// 发微博的用户信息
     var user:QJUserModel?
-    /// 微博配图的 url字典数组，格式: [[thumbnail_pic: urlString]]
-    var pic_urls:[[String:String]]?
+    /// 微博配图的 url字典数组，请使用 pic_URLs 属性
+    /// 格式: [[thumbnail_pic: urlString]]
+    var pic_urls:[[String:String]]? {
+        didSet{
+            guard let urls = pic_urls else {
+                pic_URLs = nil
+                return
+            }
+            pic_URLs = [NSURL]()
+            for item in urls {
+                guard let url = item["thumbnail_pic"] else {
+                    continue
+                }
+                guard let URL = NSURL(string: url) else {
+                    continue
+                }
+                pic_URLs?.append(URL)
+            }
+        }
+    }
+    /// 微博配图(pic_urls转成的)
+    var pic_URLs:[NSURL]?
+    /// 转发微博
+    var retweeted_status:QJStatuseModel?
     /// 转发数
     var reposts_count:Int = 0
     /// 评论数
@@ -48,7 +70,14 @@ class QJStatuseModel: NSObject {
     
     // MARK: 方法
     
-    class func model(with dic:[String:Any]) -> QJStatuseModel{
+    class func model(with dic:[String:Any]?) -> QJStatuseModel? {
+        
+        guard let dic = dic else {
+            return nil
+        }
+        guard dic.keys.count > 0 else {
+            return nil
+        }
         
         let model = QJStatuseModel()
         
@@ -61,7 +90,7 @@ class QJStatuseModel: NSObject {
         model.reposts_count = dic["reposts_count"] as? Int ?? 0
         model.comments_count = dic["comments_count"] as? Int ?? 0
         model.attitudes_count = dic["attitudes_count"] as? Int ?? 0
-        
+        model.retweeted_status = QJStatuseModel.model(with: dic["retweeted_status"] as? [String : Any] )
         // 处理 source
         model.dealSource()
         

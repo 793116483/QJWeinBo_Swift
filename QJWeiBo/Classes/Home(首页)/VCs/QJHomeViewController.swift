@@ -24,7 +24,7 @@ class QJHomeViewController: QJBaseViewController {
         tableView.estimatedRowHeight = 200
         tableView.separatorStyle = .none
 //        tableView.showsVerticalScrollIndicator = false
-        tableView.register(NSClassFromString("QJHomeTableViewCell"), forCellReuseIdentifier: "QJHomeTableViewCell")
+        tableView.register(QJHomeTableViewCell.self, forCellReuseIdentifier: "QJHomeTableViewCell")
         
         return tableView
     }()
@@ -59,11 +59,11 @@ extension QJHomeViewController{
         QJHTTPSessionManager.get(URLString: urlStr, parameters: parameters, success: { (objc) in
             
             let statuses:[[String:Any]] = objc?["statuses"] as! [[String : Any]]
-            Log(statuses)
+//            Log(statuses)
             
             for item in statuses {
                 let statuse = QJStatuseModel.model(with: item)
-                self.statuses.append(statuse)
+                self.statuses.append(statuse!)
             }
             self.tableView.reloadData()
             
@@ -101,7 +101,7 @@ private extension QJHomeViewController {
         
         // 设置 titleView
         let titleView = QJButton(style: .QJButtonStyleRight)
-        titleView.set(title: QJUserInfoModel.userInfo?.screen_name, image: "navigationbar_arrow_up", highlighted: "", selected: "navigationbar_arrow_down")
+        titleView.set(title: QJUserInfoModel.userInfo?.screen_name, image: "navigationbar_arrow_down", highlighted: "", selected: "navigationbar_arrow_up")
         titleView.addTarget(self, action: #selector(titleViewDidClicked), for: .touchUpInside)
         self.navigationItem.titleView = titleView
         
@@ -143,7 +143,7 @@ private extension QJHomeViewController  {
 }
 
 
-// MARK: UITableViewDataSource
+// MARK: UITableViewDataSource & UITableViewDelegate
 extension QJHomeViewController: UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.statuses.count
@@ -158,10 +158,13 @@ extension QJHomeViewController: UITableViewDataSource , UITableViewDelegate {
         cellTmp.statuse = self.statuses[indexPath.row]
         return cellTmp.cellHeight
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Log(self.statuses[indexPath.row].pic_URLs)
+    }
 }
 
 // MARK: QJNavTitlePopViewDelegate
-extension QJHomeViewController:QJNavTitlePopViewDelegate{
+extension QJHomeViewController : QJNavTitlePopViewDelegate{
     func didClickedBackgroundView() {
         titleViewDidClicked()
     }
