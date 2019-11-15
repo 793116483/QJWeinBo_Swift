@@ -196,8 +196,8 @@ private extension QJHomeViewController {
             }
         }
     }
-    static var isShowing = false
     /// 弹出刷新的个数提示
+    static var isShowing = false
     func showRefreshData(count:Int) {
         
         DispatchQueue.global().async {
@@ -219,9 +219,11 @@ private extension QJHomeViewController {
                 let animationShow = QJBasicAnimation(duration: 1, keyPath: "backgroundColor", fromValue: UIColor.clear.cgColor, toValue: UIColor.orange.cgColor)
                 hintLable.layer.add(animationShow, forKey: "animationShow")
 
+                // 时间单位 秒
                 let timeSecond = DispatchTime.init(uptimeNanoseconds: DispatchTime.now().uptimeNanoseconds + 3*1000000000)
                 DispatchQueue.main.asyncAfter(deadline:timeSecond) {
                     let animationHidden = QJBasicAnimation(duration: 1, keyPath: "transform.scale.y", fromValue: 1.0, toValue: 0.001 ) { (isFinish) in
+                        // 还原
                         hintLable.removeFromSuperview()
                         QJHomeViewController.isShowing = false
                     }
@@ -229,8 +231,6 @@ private extension QJHomeViewController {
                 }
             }
         }
-        
-        
     }
 }
 
