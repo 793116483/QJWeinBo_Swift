@@ -12,6 +12,7 @@ target 'QJWeiBo' do
   pod 'Masonry'
   pod 'MJExtension'
   pod 'SDWebImage'
+  pod 'MJRefresh'
 
   target 'QJWeiBoTests' do
     inherit! :search_paths

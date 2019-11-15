@@ -185,9 +185,9 @@ private extension QJHomeTableViewCell {
     func setUIData() {
         iconImageView.sd_setImage(with: URL(string: statuse?.user?.profile_image_url ?? ""), completed: nil)
         verifiedImageView.image = statuse?.user?.verifiedImage
+        vipImageView.image = statuse?.user?.vipImage
         userNameLabel.text = statuse?.user?.screen_name
         userNameLabel.textColor = vipImageView.image != nil ? .orange : .black
-        vipImageView.image = statuse?.user?.vipImage
         createdTimeLabel.text = statuse?.created_at_show
         sourceLabel.text = statuse?.source
         contentTextLabel.text = statuse?.text

@@ -105,25 +105,19 @@ class QJPictureCollectionViewCell: UICollectionViewCell {
     }()
     var imageURL:NSURL? {
         didSet{
-            
-            guard let imageURL = imageURL  else {
-                self.iconView.image = nil
-                return
+
+            let cacheKey = SDWebImageManager.shared.cacheKey(for: imageURL as? URL)
+            self.iconView.image = SDImageCache.shared.imageFromDiskCache(forKey: cacheKey)
+            if self.iconView.image == nil {
+                SDWebImageManager.shared.loadImage(with: imageURL as? URL, options: [], progress: nil) { (image, _, _, _, _, _) in
+                    // 直接设置这里会存在复盖问题：复用了cell url已经不是原先下载好的url
+                    self.iconView.image = image
+                }
             }
-            let cacheKey = SDWebImageManager.shared.cacheKey(for: imageURL as URL)
-            let image = SDImageCache.shared.imageFromDiskCache(forKey: cacheKey)
-            if image == nil {
-                self.iconView.setImageWith(imageURL as URL, placeholderImage: UIImage(named: "empty_picture"))
-            }
-            else{
-                self.iconView.image = image
-            }
-            
-            Log(self.iconView.image?.size)
         }
     }
     
-    
+    /// 初始化
     override init(frame: CGRect) {
         super.init(frame: frame)
         
