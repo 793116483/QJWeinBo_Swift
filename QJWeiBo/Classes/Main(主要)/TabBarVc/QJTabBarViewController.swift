@@ -48,6 +48,14 @@ private extension QJTabBarViewController {
         self.addChildViewController(vcName: "QJHomeViewController", title: "首页", imageName: "tabbar_home")
         // 添加消息
         self.addChildViewController(vcName: "QJMessageViewController", title: "消息", imageName: "tabbar_message_center")
+        // 添加发布
+        self.addChildViewController(vcName: "QJComposeViewController", title: "", imageName: "tabbar_compose_icon_add")
+        let plusItemBtn = tabBarView.items_.last
+        plusItemBtn?.setImage(UIImage(named: "tabbar_compose_icon_add"), for: .selected)
+        plusItemBtn?.setBackgroundImage(UIImage(named: "tabbar_compose_button"), for: .normal)
+        plusItemBtn?.setBackgroundImage(UIImage(named: "tabbar_compose_button"), for: .selected)
+        plusItemBtn?.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), for: .highlighted)
+
         // 添加发现
         self.addChildViewController(vcName: "QJDiscoverViewController", title: "发现", imageName: "tabbar_discover")
         // 添加我的

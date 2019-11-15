@@ -15,6 +15,7 @@
 		F20349A12377E9290087A90C /* QJOauthNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20349A02377E9290087A90C /* QJOauthNetworkTool.swift */; };
 		F20349A42377F46C0087A90C /* QJAccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20349A32377F46C0087A90C /* QJAccessTokenModel.swift */; };
 		F20349A82378015A0087A90C /* QJUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20349A72378015A0087A90C /* QJUserInfoModel.swift */; };
+		F20FCC8A237EE90500E2132A /* QJComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20FCC89237EE90500E2132A /* QJComposeViewController.swift */; };
 		F22435A5237BFF5E0008CE47 /* NSString+QJExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22435A4237BFF5E0008CE47 /* NSString+QJExtension.swift */; };
 		F22435A7237C0FF40008CE47 /* QJHomeCellBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F22435A6237C0FF40008CE47 /* QJHomeCellBottomView.xib */; };
 		F22435A9237C59CD0008CE47 /* QJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22435A8237C59CD0008CE47 /* QJButton.swift */; };
@@ -79,6 +80,7 @@
 		F20349A02377E9290087A90C /* QJOauthNetworkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJOauthNetworkTool.swift; sourceTree = "<group>"; };
 		F20349A32377F46C0087A90C /* QJAccessTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJAccessTokenModel.swift; sourceTree = "<group>"; };
 		F20349A72378015A0087A90C /* QJUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJUserInfoModel.swift; sourceTree = "<group>"; };
+		F20FCC89237EE90500E2132A /* QJComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJComposeViewController.swift; sourceTree = "<group>"; };
 		F22435A4237BFF5E0008CE47 /* NSString+QJExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+QJExtension.swift"; sourceTree = "<group>"; };
 		F22435A6237C0FF40008CE47 /* QJHomeCellBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QJHomeCellBottomView.xib; sourceTree = "<group>"; };
 		F22435A8237C59CD0008CE47 /* QJButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QJButton.swift; sourceTree = "<group>"; };
@@ -185,6 +187,38 @@
 				F20349A72378015A0087A90C /* QJUserInfoModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F20FCC85237EE8D700E2132A /* Compose(发布) */ = {
+			isa = PBXGroup;
+			children = (
+				F20FCC86237EE8D700E2132A /* Model */,
+				F20FCC87237EE8D700E2132A /* View */,
+				F20FCC88237EE8D700E2132A /* ViewController */,
+			);
+			path = "Compose(发布)";
+			sourceTree = "<group>";
+		};
+		F20FCC86237EE8D700E2132A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F20FCC87237EE8D700E2132A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F20FCC88237EE8D700E2132A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F20FCC89237EE90500E2132A /* QJComposeViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		F22435AA237C63120008CE47 /* TabBarVc */ = {
@@ -331,6 +365,7 @@
 				F239C9B12373CFB900AE01BC /* Main(主要) */,
 				F239C9AD2373CFB900AE01BC /* Home(首页) */,
 				F239C9AE2373CFB900AE01BC /* Message(消息) */,
+				F20FCC85237EE8D700E2132A /* Compose(发布) */,
 				F239C9B02373CFB900AE01BC /* Discover(发现) */,
 				F239C9AF2373CFB900AE01BC /* Profile(我) */,
 			);
@@ -691,6 +726,7 @@
 				F20349A12377E9290087A90C /* QJOauthNetworkTool.swift in Sources */,
 				F22435B3237C63370008CE47 /* QJNavigationViewController.swift in Sources */,
 				F2E5C8482375BC4E001035A5 /* QJNavTitlePopView.swift in Sources */,
+				F20FCC8A237EE90500E2132A /* QJComposeViewController.swift in Sources */,
 				F239C97A2373C11700AE01BC /* AppDelegate.swift in Sources */,
 				F22435B4237C63370008CE47 /* QJBaseViewController.swift in Sources */,
 				F22D84A4237AB16900E5A910 /* QJStatuseModel.swift in Sources */,

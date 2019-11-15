@@ -73,26 +73,26 @@ extension QJButton {
     /// 布局子控件
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         // 如果是系统类型就不用重新布局
         guard self.style != .QJButtonStyleSystem else {
             self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
             return
         }
+        self.imageView?.sizeToFit()
+        self.titleLabel?.sizeToFit()
+        if self.imageView!.height <= 0 || self.titleLabel!.height <= 0 {
+            return
+        }
         
         if self.style == .QJButtonStyleUp { // 上下样式
-            var titleH:CGFloat = 0
-            if self.titleLabel?.text?.isEmpty == false {
-                titleH = 14
-            }
+            var titleH:CGFloat = self.titleLabel!.height
             let space:CGFloat = 2
             self.imageView?.frame = CGRect(x: 0, y: space, width: self.width, height: self.height - 3*space - titleH)
             self.titleLabel?.frame = CGRect(x: 0, y: self.imageView!.height+space, width: self.width, height: titleH)
         }
         else if self.style == .QJButtonStyleRight { // 图片在右侧
-            
-            self.titleLabel?.sizeToFit()
-            
+
             let space:CGFloat = 2
             let titleW = self.titleLabel?.width ?? 0
             let imageViewW = self.imageView?.width ?? 0
