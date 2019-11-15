@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let kGrayColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.5)
+
 class QJHomeTableViewCell: UITableViewCell {
     // MARK: 属性
     /// 用户头象
@@ -55,9 +57,11 @@ class QJHomeTableViewCell: UITableViewCell {
         contentLabel.textColor = UIColor.black
         return contentLabel
     }()
+    /// 转发微博 view
+    private var retweetSatuseView = QJHomeCellRetweetSatuseView()
     /// 图片展示
     lazy private var pictrueView:QJPictureCollectionView = {
-        let maxWith = UIScreen.main.bounds.width - space * 2
+        let maxWith = UIScreen.main.bounds.width - QJHomeTableViewCell.space * 2
         return QJPictureCollectionView.pictureCollectionView(maxWidth: maxWith)
     }()
     /// 底部 views
@@ -74,7 +78,9 @@ class QJHomeTableViewCell: UITableViewCell {
         }
     }
     /// 用于布局的 间隔
-    private let space:CGFloat = 15
+    static var space:CGFloat {
+        return 15
+    }
     /// cell高度
     var cellHeight:CGFloat = 0
     
@@ -83,7 +89,7 @@ class QJHomeTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         let bgView = UIView()
-        bgView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
+        bgView.backgroundColor = kGrayColor
         self.selectedBackgroundView = bgView
         
         addSubviewsToContentView()
@@ -121,12 +127,13 @@ private extension QJHomeTableViewCell {
         contentView.addSubview(createdTimeLabel)
         contentView.addSubview(sourceLabel)
         contentView.addSubview(contentTextLabel)
+        contentView.addSubview(retweetSatuseView)
         contentView.addSubview(pictrueView)
         contentView.addSubview(bottomView)
         
         iconImageView.mas_makeConstraints {[weak self] (make) in
-            make?.left.equalTo()(self?.contentView)?.offset()(space)
-            make?.top.equalTo()(self?.contentView)?.offset()(space)
+            make?.left.equalTo()(self?.contentView)?.offset()(QJHomeTableViewCell.space)
+            make?.top.equalTo()(self?.contentView)?.offset()(QJHomeTableViewCell.space)
             make?.width.equalTo()(40)
             make?.height.equalTo()(40)
         }
@@ -135,29 +142,35 @@ private extension QJHomeTableViewCell {
             make?.bottom.equalTo()(self?.iconImageView)
         }
         userNameLabel.mas_makeConstraints {[weak self] (make) in
-            make?.left.equalTo()(self?.iconImageView.mas_right)?.offset()(space)
+            make?.left.equalTo()(self?.iconImageView.mas_right)?.offset()(QJHomeTableViewCell.space)
             make?.top.equalTo()(self?.iconImageView)
         }
         vipImageView.mas_makeConstraints {[weak self] (make) in
-            make?.left.equalTo()(self?.userNameLabel.mas_right)?.offset()(space)
+            make?.left.equalTo()(self?.userNameLabel.mas_right)?.offset()(QJHomeTableViewCell.space)
             make?.centerY.equalTo()(self?.userNameLabel)
         }
         createdTimeLabel.mas_makeConstraints {[weak self] (make) in
-            make?.left.equalTo()(self?.iconImageView.mas_right)?.offset()(space)
+            make?.left.equalTo()(self?.iconImageView.mas_right)?.offset()(QJHomeTableViewCell.space)
             make?.bottom.equalTo()(self?.iconImageView)
         }
         sourceLabel.mas_makeConstraints {[weak self] (make) in
-            make?.left.equalTo()(self?.createdTimeLabel.mas_right)?.offset()(space)
+            make?.left.equalTo()(self?.createdTimeLabel.mas_right)?.offset()(QJHomeTableViewCell.space)
             make?.bottom.equalTo()(self?.createdTimeLabel)
         }
         contentTextLabel.mas_makeConstraints {[weak self] (make) in
-            make?.left.equalTo()(self?.contentView)?.offset()(space)
-            make?.right.equalTo()(self?.contentView)?.offset()(-space)
-            make?.top.equalTo()(self?.iconImageView.mas_bottom)?.offset()(space)
+            make?.left.equalTo()(self?.contentView)?.offset()(QJHomeTableViewCell.space)
+            make?.right.equalTo()(self?.contentView)?.offset()(-QJHomeTableViewCell.space)
+            make?.top.equalTo()(self?.iconImageView.mas_bottom)?.offset()(QJHomeTableViewCell.space)
+        }
+        retweetSatuseView.mas_remakeConstraints {[weak self] (make) in
+            make?.left.equalTo()(self?.contentView)
+            make?.right.equalTo()(self?.contentView)
+            make?.top.equalTo()(self?.contentTextLabel.mas_bottom)?.offset()(0)
+            make?.height.equalTo()(0)
         }
         pictrueView.mas_remakeConstraints {[weak self] (make) in
-            make?.left.equalTo()(self?.contentView)?.offset()(space)
-            make?.top.equalTo()(self?.contentTextLabel.mas_bottom)?.offset()(space)
+            make?.left.equalTo()(self?.contentView)?.offset()(QJHomeTableViewCell.space)
+            make?.top.equalTo()(self?.retweetSatuseView.mas_bottom)?.offset()(0)
             make?.size.equalTo()(CGSize.zero)
         }
         bottomView.mas_makeConstraints {[weak self] (make) in
@@ -178,13 +191,25 @@ private extension QJHomeTableViewCell {
         createdTimeLabel.text = statuse?.created_at_show
         sourceLabel.text = statuse?.source
         contentTextLabel.text = statuse?.text
+        retweetSatuseView.statuse = statuse?.retweeted_status
         pictrueView.pictureUrls = statuse?.pic_URLs
         bottomView.setUIData(statuse: statuse)
         
+        // 重新设置 retweetSatuseView 布局
+        let retweetSatuseViewSpace = retweetSatuseView.selfHeight > 0 ? QJHomeTableViewCell.space : 0
+        retweetSatuseView.mas_remakeConstraints {[weak self] (make) in
+            make?.left.equalTo()(self?.contentView)
+            make?.right.equalTo()(self?.contentView)
+            make?.top.equalTo()(self?.contentTextLabel.mas_bottom)?.offset()(retweetSatuseViewSpace)
+            make?.height.equalTo()(self?.retweetSatuseView.selfHeight)
+        }
+        // 重新设置 pictrueView 布局
+        let pictrueViewSize = pictrueView.collectionViewSize()
+        let pictrueViewSpace = pictrueViewSize.height > 0 ? QJHomeTableViewCell.space : 0
         pictrueView.mas_remakeConstraints {[weak self] (make) in
-            make?.left.equalTo()(self?.contentView)?.offset()(space)
-            make?.top.equalTo()(self?.contentTextLabel.mas_bottom)?.offset()(space)
-            make?.size.equalTo()(pictrueView.collectionViewSize())
+            make?.left.equalTo()(self?.contentView)?.offset()(QJHomeTableViewCell.space)
+            make?.top.equalTo()(self?.retweetSatuseView.mas_bottom)?.offset()(pictrueViewSpace)
+            make?.size.equalTo()(pictrueViewSize)
         }
     }
     
@@ -193,18 +218,123 @@ private extension QJHomeTableViewCell {
 // MARK: 工具方法
 extension QJHomeTableViewCell {
     func calculateCellHeight() -> CGFloat {
-        let maxWidth:CGFloat = UIScreen.main.bounds.width - space * 2
-
+        // 间隔
+        let space = QJHomeTableViewCell.space
+        // 头象高度
         let iconH:CGFloat = space + 40
-                
-        var textH = ((statuse?.text ?? "") as NSString).size(maxWidth: maxWidth, textFont:contentTextLabel.font).height
+        // 正文高度
+        var textH = ((statuse?.text ?? "") as NSString).size(maxWidth: pictrueView.maxWidth, textFont:contentTextLabel.font).height
         textH += (textH > 0 ? space : 0)
+        // 转发微博的高度
+        var retweetSatuseViewH = retweetSatuseView.selfHeight
+        retweetSatuseViewH += retweetSatuseViewH > 0 ? space : 0
+        // 配图高度
+        var pictrueViewH = pictrueView.collectionViewSize().height
+        pictrueViewH += (pictrueViewH > 0 ? space : 0)
+        // 底部 view 高度
+        var bottomH:CGFloat = 55
+        bottomH += retweetSatuseViewH > 0 ? 0 : space
         
+        return iconH + textH + retweetSatuseViewH + pictrueViewH + bottomH
+    }
+}
+
+// MARK: 转发微博的view
+class QJHomeCellRetweetSatuseView : UIView {
+    /// 显示的内容：@用户名+正文
+    private var textLabel:UILabel = {
+        let label = UILabel()
+        label.textColor = .gray
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 16)
+        
+        return label
+    }()
+    /// 图片展示
+    lazy private var pictrueView:QJPictureCollectionView = {
+        let maxWith = UIScreen.main.bounds.width - QJHomeTableViewCell.space * 2
+        return QJPictureCollectionView.pictureCollectionView(maxWidth: maxWith)
+    }()
+    
+    /// 被转发的微博
+    var statuse:QJStatuseModel? {
+        didSet{
+            setUIData()
+            selfHeight = calculateSelfHeight()
+        }
+    }
+    /// 自身的高度，前提必须先设置转发微博的数据
+    var selfHeight:CGFloat = 0
+    
+    // 初始化
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.backgroundColor = kGrayColor
+        
+        
+        self.addSubview(textLabel)
+        self.addSubview(pictrueView)
+        
+        textLabel.mas_remakeConstraints {[weak self] (make) in
+            make?.left.equalTo()(self?.mas_left)?.offset()(QJHomeTableViewCell.space)
+            make?.right.equalTo()(self?.mas_right)?.offset()(-QJHomeTableViewCell.space)
+            make?.top.equalTo()(self?.mas_top)?.offset()(QJHomeTableViewCell.space)
+        }
+        pictrueView.mas_remakeConstraints {[weak self] (make) in
+            make?.left.equalTo()(self?.mas_left)?.offset()(QJHomeTableViewCell.space)
+            make?.top.equalTo()(self?.textLabel.mas_bottom)?.offset()(0)
+            make?.size.equalTo()(CGSize.zero)
+        }
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    /// 设置UI数据
+    func setUIData(){
+        guard let statuse = statuse else {
+            textLabel.text = nil
+            pictrueView.mas_remakeConstraints {[weak self] (make) in
+                make?.left.equalTo()(self?.mas_left)?.offset()(QJHomeTableViewCell.space)
+                make?.top.equalTo()(self?.textLabel.mas_bottom)?.offset()(0)
+                make?.size.equalTo()(CGSize.zero)
+            }
+            return
+        }
+        
+        // 设置转发内容
+        textLabel.text = "@\(statuse.user?.screen_name ?? ""):\(statuse.text ?? "")"
+        
+        // 设置配图数据
+        pictrueView.pictureUrls = statuse.pic_URLs
+        // 重新布局配图 view
+        let pictrueViewSize = pictrueView.collectionViewSize()
+        let pictrueViewSpace = pictrueViewSize.height > 0 ? QJHomeTableViewCell.space : 0
+        pictrueView.mas_remakeConstraints {[weak self] (make) in
+            make?.left.equalTo()(self?.mas_left)?.offset()(QJHomeTableViewCell.space)
+            make?.top.equalTo()(self?.textLabel.mas_bottom)?.offset()(pictrueViewSpace)
+            make?.size.equalTo()(pictrueViewSize)
+        }
+    }
+    /// 计算自身高度
+    func calculateSelfHeight() -> CGFloat {
+        
+        guard let statuse = statuse else {
+            return 0
+        }
+        
+        // 间隔
+        let space = QJHomeTableViewCell.space
+
+        // 正文高度
+        var textH = ((statuse.text ?? "") as NSString).size(maxWidth: pictrueView.maxWidth, textFont:textLabel.font).height
+        textH += (textH > 0 ? space : 0)
+        // 配图高度
         var pictrueViewH = pictrueView.collectionViewSize().height
         pictrueViewH += (pictrueViewH > 0 ? space : 0)
         
-        let bottomH:CGFloat = space + 55
-        return iconH + textH + pictrueViewH + bottomH
+        return textH + pictrueViewH + ((textH + pictrueViewH) > 0 ? space : 0)
     }
 }
 

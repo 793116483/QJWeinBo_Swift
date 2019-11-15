@@ -55,7 +55,7 @@ extension QJHomeViewController{
             return
         }
         let urlStr = "https://api.weibo.com/2/statuses/home_timeline.json"
-        let parameters = ["access_token":access_token]
+        let parameters = ["access_token":access_token , "count":100] as [String : Any]
         QJHTTPSessionManager.get(URLString: urlStr, parameters: parameters, success: { (objc) in
             
             let statuses:[[String:Any]] = objc?["statuses"] as! [[String : Any]]
@@ -159,7 +159,7 @@ extension QJHomeViewController: UITableViewDataSource , UITableViewDelegate {
         return cellTmp.cellHeight
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Log(self.statuses[indexPath.row].pic_URLs)
+        Log(self.statuses[indexPath.row].retweeted_status)
     }
 }
 

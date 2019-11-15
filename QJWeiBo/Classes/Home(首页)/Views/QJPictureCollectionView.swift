@@ -103,10 +103,24 @@ extension QJPictureCollectionView : UICollectionViewDataSource , UICollectionVie
 // MARK: QJCollectionViewCell
 class QJPictureCollectionViewCell: UICollectionViewCell {
     
-    var iconView = UIImageView()
+    var iconView:UIImageView = {
+        let imageView = UIImageView()
+//        imageView.contentMode = .top
+        imageView.clipsToBounds = true
+        
+        return imageView
+    }()
     var imageURL:NSURL? {
         didSet{
-            self.iconView.sd_setImage(with: imageURL as URL?, placeholderImage: UIImage(named: "empty_picture"), options: [], context: nil)
+            self.iconView.sd_setImage(with: imageURL as? URL, placeholderImage: UIImage(named: "empty_picture"), options: []) {[] (image, error, type, url) in
+
+                if image === nil {
+                    self.iconView.image = UIImage(named: "empty_picture")
+                }
+                else{
+                    self.iconView.image = image
+                }
+            }
         }
     }
     

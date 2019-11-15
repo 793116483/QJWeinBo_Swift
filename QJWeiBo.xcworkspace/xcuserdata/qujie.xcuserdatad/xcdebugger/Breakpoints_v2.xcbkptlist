@@ -79,5 +79,117 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7D9620D6-521B-4B4D-B2DE-ECF0FE27B2B7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QJWeiBo/Classes/Home(&#x9996;&#x9875;)/Models/QJStatuseModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "model(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "60CE37F9-CFE5-454D-8B74-A2ADA9C7F58E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QJWeiBo/Classes/Home(&#x9996;&#x9875;)/VCs/QJHomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A9245321-95D4-41A6-A0F5-2B7BBA50DE08"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QJWeiBo/Classes/Home(&#x9996;&#x9875;)/Views/QJHomeTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "setUIData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6E3B487C-2D61-42A9-B55D-AD9C53402F08"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QJWeiBo/Classes/Home(&#x9996;&#x9875;)/Views/QJHomeTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
+            landmarkName = "calculateSelfHeight()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C1DD7646-6F27-4171-80C3-F8E759CD8AA7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QJWeiBo/Classes/Home(&#x9996;&#x9875;)/Views/QJPictureCollectionView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "imageURL"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "C1DD7646-6F27-4171-80C3-F8E759CD8AA7 - a82e00a572089e7e"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QJWeiBo.QJPictureCollectionViewCell.imageURL.didset : Swift.Optional&lt;__C.NSURL&gt;"
+                  moduleName = "QJWeiBo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qujie/Desktop/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BB%A3%E7%A0%81/swift/01%E5%A4%A9/QJWeiBo/QJWeiBo/Classes/Home(%E9%A6%96%E9%A1%B5)/Views/QJPictureCollectionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "155">
+               </Location>
+               <Location
+                  uuid = "C1DD7646-6F27-4171-80C3-F8E759CD8AA7 - 49e13287e9719dd8"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.UIImage&gt;, Swift.Optional&lt;Swift.Error&gt;, __C.SDImageCacheType, Swift.Optional&lt;Foundation.URL&gt;) -&gt; () in QJWeiBo.QJPictureCollectionViewCell.imageURL.didset : Swift.Optional&lt;__C.NSURL&gt;"
+                  moduleName = "QJWeiBo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qujie/Desktop/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BB%A3%E7%A0%81/swift/01%E5%A4%A9/QJWeiBo/QJWeiBo/Classes/Home(%E9%A6%96%E9%A1%B5)/Views/QJPictureCollectionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "181">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
