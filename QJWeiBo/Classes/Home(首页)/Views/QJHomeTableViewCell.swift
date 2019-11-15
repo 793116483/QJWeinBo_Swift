@@ -251,10 +251,7 @@ class QJHomeCellRetweetSatuseView : UIView {
         return label
     }()
     /// 图片展示
-    lazy private var pictrueView:QJPictureCollectionView = {
-        let maxWith = UIScreen.main.bounds.width - QJHomeTableViewCell.space * 2
-        return QJPictureCollectionView.pictureCollectionView(maxWidth: maxWith)
-    }()
+    lazy private var pictrueView:QJPictureCollectionView = QJPictureCollectionView.pictureCollectionView(maxWidth: UIScreen.main.bounds.width - QJHomeTableViewCell.space * 2)
     
     /// 被转发的微博
     var statuse:QJStatuseModel? {

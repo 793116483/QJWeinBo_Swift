@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class QJPictureCollectionView: UICollectionView {
     /// 每个 item 间隔
@@ -14,28 +15,27 @@ class QJPictureCollectionView: UICollectionView {
     var maxWidth : CGFloat = 0
     var pictureUrls : [NSURL]? {
         didSet{
-            // 重新改变 layout
-            let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
-            layout.itemSize = itemSize()
-            layout.minimumLineSpacing = itemSpacing
-            layout.minimumInteritemSpacing = itemSpacing
-            self.collectionViewLayout = layout
-            
             self.reloadData()
         }
     }
     
     class func pictureCollectionView(maxWidth : CGFloat) -> QJPictureCollectionView{
-
         
         // 流布局
         let layout = UICollectionViewFlowLayout()
+        
         // 创建 collectionView
-        let pictureView = QJPictureCollectionView(frame: CGRect() , collectionViewLayout: layout) 
+        let frame = CGRect(x: 0, y: 0, width: 500, height: 500)
+        let pictureView = QJPictureCollectionView(frame: frame  , collectionViewLayout: layout)
         pictureView.backgroundColor = .clear
         pictureView.dataSource = pictureView
         pictureView.delegate = pictureView
         pictureView.maxWidth = maxWidth
+        
+        layout.itemSize = pictureView.itemSize()
+        layout.minimumLineSpacing = pictureView.itemSpacing
+        layout.minimumInteritemSpacing = pictureView.itemSpacing
+        
         // 注册
         pictureView.register(QJPictureCollectionViewCell.self, forCellWithReuseIdentifier: "QJPictureCollectionViewCell")
         
@@ -46,15 +46,8 @@ class QJPictureCollectionView: UICollectionView {
 extension QJPictureCollectionView {
     
     func itemSize() -> CGSize {
-        guard let urls = pictureUrls else {
-            return CGSize(width: 0, height: 0)
-        }
-        guard urls.count > 0 else {
-            return CGSize(width: 0, height: 0)
-        }
         // 一行最多方 3 个
         let itemWH:CGFloat = (maxWidth - itemSpacing * 2) / 3
-        
         return CGSize(width: itemWH, height: itemWH)
     }
     
@@ -112,15 +105,21 @@ class QJPictureCollectionViewCell: UICollectionViewCell {
     }()
     var imageURL:NSURL? {
         didSet{
-            self.iconView.sd_setImage(with: imageURL as? URL, placeholderImage: UIImage(named: "empty_picture"), options: []) {[] (image, error, type, url) in
-
-                if image === nil {
-                    self.iconView.image = UIImage(named: "empty_picture")
-                }
-                else{
-                    self.iconView.image = image
-                }
+            
+            guard let imageURL = imageURL  else {
+                self.iconView.image = nil
+                return
             }
+            let cacheKey = SDWebImageManager.shared.cacheKey(for: imageURL as URL)
+            let image = SDImageCache.shared.imageFromDiskCache(forKey: cacheKey)
+            if image == nil {
+                self.iconView.setImageWith(imageURL as URL, placeholderImage: UIImage(named: "empty_picture"))
+            }
+            else{
+                self.iconView.image = image
+            }
+            
+            Log(self.iconView.image?.size)
         }
     }
     
@@ -129,17 +128,15 @@ class QJPictureCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.contentView.addSubview(iconView)
-        iconView.mas_remakeConstraints {[weak self] (make) in
-            make?.left.equalTo()(self?.contentView)
-            make?.top.equalTo()(self?.contentView)
-            make?.bottom.equalTo()(self?.contentView)
-            make?.right.equalTo()(self?.contentView)
-        }
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        iconView.frame = self.bounds
+    }
 }
 
