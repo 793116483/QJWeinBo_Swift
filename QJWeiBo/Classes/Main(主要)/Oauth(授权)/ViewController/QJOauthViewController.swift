@@ -103,8 +103,11 @@ private extension QJOauthViewController {
     func showWelcomeVc() {
         // 先将当前控制器关掉
         self.dismiss(animated: false) {
-            // 显示 欢迎界面
-            UIApplication.shared.keyWindow?.rootViewController = QJLoginSeccessWelcomeVc()
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: DispatchTime.now().uptimeNanoseconds + 1*100000000)) {
+                // 显示 欢迎界面
+                UIApplication.shared.keyWindow?.rootViewController = QJLoginSeccessWelcomeVc()
+            }
         }
     }
 }

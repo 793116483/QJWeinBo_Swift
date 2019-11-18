@@ -36,7 +36,7 @@ extension QJBaseViewController {
         setUpNavItem()
     }
     /// 设置导航兰 注册 和 登录
-    func setUpNavItem() {
+    private func setUpNavItem() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .done, target: self, action: #selector(registerAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .plain, target: self, action: #selector(loginAction))
 
@@ -44,7 +44,7 @@ extension QJBaseViewController {
 }
 
 // MARK: 监听点击事件
-extension QJBaseViewController {
+private extension QJBaseViewController {
     /// 注册事件
     @objc func registerAction() {
         Log("注册")

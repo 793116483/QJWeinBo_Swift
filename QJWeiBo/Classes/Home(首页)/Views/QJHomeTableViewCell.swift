@@ -50,8 +50,8 @@ class QJHomeTableViewCell: UITableViewCell {
         return sourceLabel
     }()
     /// 正文内容
-    private var contentTextLabel: UILabel = {
-        let contentLabel = UILabel()
+    private var contentTextLabel: HYLabel = {
+        let contentLabel = HYLabel()
         contentLabel.numberOfLines = 0
         contentLabel.font = UIFont.systemFont(ofSize: 18)
         contentLabel.textColor = UIColor.black
@@ -242,8 +242,8 @@ extension QJHomeTableViewCell {
 // MARK: 转发微博的view
 class QJHomeCellRetweetSatuseView : UIView {
     /// 显示的内容：@用户名+正文
-    private var textLabel:UILabel = {
-        let label = UILabel()
+    private var textLabel:HYLabel = {
+        let label = HYLabel()
         label.textColor = .gray
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 16)

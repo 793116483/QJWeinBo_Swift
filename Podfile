@@ -13,6 +13,7 @@ target 'QJWeiBo' do
   pod 'MJExtension'
   pod 'SDWebImage'
   pod 'MJRefresh'
+  pod 'HYLabel'
 
   target 'QJWeiBoTests' do
     inherit! :search_paths

@@ -45,7 +45,9 @@
 		F239C9CD23745F1200AE01BC /* QJPublic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F239C9CC23745F1200AE01BC /* QJPublic.swift */; };
 		F27CA42A237D2D9E006DC3B7 /* QJPictureCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27CA429237D2D9D006DC3B7 /* QJPictureCollectionView.swift */; };
 		F2CB66A82376B8DD00C2F2B8 /* QJBasicAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CB66A72376B8DD00C2F2B8 /* QJBasicAnimation.swift */; };
+		F2D3CF1C237FC3B400AA2071 /* QJTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D3CF1B237FC3B400AA2071 /* QJTextView.swift */; };
 		F2E5C8482375BC4E001035A5 /* QJNavTitlePopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E5C8472375BC4D001035A5 /* QJNavTitlePopView.swift */; };
+		F2FD481D238292A200D59FC1 /* HYLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD481C238292A200D59FC1 /* HYLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,7 +118,9 @@
 		F239C9CC23745F1200AE01BC /* QJPublic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJPublic.swift; sourceTree = "<group>"; };
 		F27CA429237D2D9D006DC3B7 /* QJPictureCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJPictureCollectionView.swift; sourceTree = "<group>"; };
 		F2CB66A72376B8DD00C2F2B8 /* QJBasicAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QJBasicAnimation.swift; sourceTree = "<group>"; };
+		F2D3CF1B237FC3B400AA2071 /* QJTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJTextView.swift; sourceTree = "<group>"; };
 		F2E5C8472375BC4D001035A5 /* QJNavTitlePopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJNavTitlePopView.swift; sourceTree = "<group>"; };
+		F2FD481C238292A200D59FC1 /* HYLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -441,10 +445,12 @@
 			isa = PBXGroup;
 			children = (
 				F22435A8237C59CD0008CE47 /* QJButton.swift */,
+				F2FD481C238292A200D59FC1 /* HYLabel.swift */,
 				F20349992377C07E0087A90C /* QJHTTPSessionManager.swift */,
 				F2CB66A72376B8DD00C2F2B8 /* QJBasicAnimation.swift */,
 				F239C9CC23745F1200AE01BC /* QJPublic.swift */,
 				F203499E2377D0610087A90C /* Common.swift */,
+				F2D3CF1B237FC3B400AA2071 /* QJTextView.swift */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -701,6 +707,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F22435A5237BFF5E0008CE47 /* NSString+QJExtension.swift in Sources */,
+				F2D3CF1C237FC3B400AA2071 /* QJTextView.swift in Sources */,
 				F22435AF237C63130008CE47 /* QJTabBarViewController.swift in Sources */,
 				F2CB66A82376B8DD00C2F2B8 /* QJBasicAnimation.swift in Sources */,
 				F20349A42377F46C0087A90C /* QJAccessTokenModel.swift in Sources */,
@@ -708,6 +715,7 @@
 				F22D84A7237AB6C700E5A910 /* QJHomeTableViewCell.swift in Sources */,
 				F27CA42A237D2D9E006DC3B7 /* QJPictureCollectionView.swift in Sources */,
 				F236D35A23754D66009EDECE /* QJVisitorView.swift in Sources */,
+				F2FD481D238292A200D59FC1 /* HYLabel.swift in Sources */,
 				F22435BD237C63F90008CE47 /* QJHomeViewController.swift in Sources */,
 				F203499A2377C07F0087A90C /* QJHTTPSessionManager.swift in Sources */,
 				F203499F2377D0610087A90C /* Common.swift in Sources */,
