@@ -195,6 +195,8 @@ private extension QJHomeTableViewCell {
         pictrueView.pictureUrls = statuse?.pic_URLs
         bottomView.setUIData(statuse: statuse)
         
+        QJHomeTableViewCell.dealEmoji(label: contentTextLabel)
+        
         // 重新设置 retweetSatuseView 布局
         let retweetSatuseViewSpace = retweetSatuseView.selfHeight > 0 ? QJHomeTableViewCell.space : 0
         retweetSatuseView.mas_remakeConstraints {[weak self] (make) in
@@ -237,6 +239,37 @@ extension QJHomeTableViewCell {
         
         return iconH + textH + retweetSatuseViewH + pictrueViewH + bottomH
     }
+    
+    /// 处理 label 内容的文字 转 表情 (图文混排)
+    class func dealEmoji(label:UILabel) {
+        guard let text = label.text else {
+            return
+        }
+        // 正则表达式 匹配
+        let pattern = "\\[.*?\\]"
+        let regular = try?  NSRegularExpression(pattern: pattern, options: [])
+        guard let result = regular?.matches(in: text, options: [], range: NSRange(location: 0, length: text.count)) else {
+            return
+        }
+        // 图文混排属性
+        let attStr = NSMutableAttributedString(string: text)
+        // 倒着遍例 把文字替换成图片，range.location 不受影响
+        for item in result.reversed() {
+            let range = item.range
+            let emojiStr = (text as NSString).substring(with: range)
+            guard let png = QJEmojiGroupManagerModel.manager.searchEmojiPng(with: emojiStr) else {
+                continue
+            }
+            // 文字用图片代替
+            let textAtt = NSTextAttachment()
+            textAtt.image = UIImage(contentsOfFile: png )
+            // 设置图片的显示大小
+            textAtt.bounds = CGRect(origin: CGPoint.zero, size: CGSize(width: label.font.lineHeight, height: label.font.lineHeight))
+            attStr.replaceCharacters(in: range, with: NSAttributedString(attachment: textAtt))
+        }
+        label.attributedText = attStr
+    }
+    
 }
 
 // MARK: 转发微博的view
@@ -302,7 +335,8 @@ class QJHomeCellRetweetSatuseView : UIView {
         
         // 设置转发内容
         textLabel.text = "@\(statuse.user?.screen_name ?? ""):\(statuse.text ?? "")"
-        
+        QJHomeTableViewCell.dealEmoji(label: textLabel)
+
         // 设置配图数据
         pictrueView.pictureUrls = statuse.pic_URLs
         // 重新布局配图 view
@@ -314,6 +348,7 @@ class QJHomeCellRetweetSatuseView : UIView {
             make?.size.equalTo()(pictrueViewSize)
         }
     }
+    
     /// 计算自身高度
     func calculateSelfHeight() -> CGFloat {
         
