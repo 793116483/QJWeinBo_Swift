@@ -66,22 +66,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A9245321-95D4-41A6-A0F5-2B7BBA50DE08"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QJWeiBo/Classes/Home(&#x9996;&#x9875;)/Views/QJHomeTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "setUIData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "6E3B487C-2D61-42A9-B55D-AD9C53402F08"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -89,9 +73,9 @@
             filePath = "QJWeiBo/Classes/Home(&#x9996;&#x9875;)/Views/QJHomeTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
-            landmarkName = "calculateSelfHeight()"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
+            landmarkName = "setUIData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

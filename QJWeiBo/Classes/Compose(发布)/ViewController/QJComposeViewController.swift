@@ -18,12 +18,13 @@ class QJComposeViewController: QJBaseViewController {
         }
         setUpNavBar()
         setUpTextView()
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.becomeFirstResponder()
-
+        
     }
 }
 
@@ -43,19 +44,31 @@ extension QJComposeViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
     }
     func setUpTextView() {
+                
         self.textView.placeHolderLable.text = "分享新鲜事..."
         self.textView.delegate = self
         self.textView.frame = self.view.bounds
         self.textView.backgroundColor = .red
-        self.view.addSubview(self.textView)
+//        self.view.addSubview(self.textView)
         self.textView.becomeFirstResponder()
+        
+        let emojiView = QJEmojiManagerView()
+//        emojiView.backgroundColor = .red
+        emojiView.frame = CGRect(x: 0, y: self.view.safeAreaInsets.top, width: self.view.width, height: 240)
+        self.view.addSubview(emojiView)
+        self.textView.inputView = emojiView
+        
+        let vc = UIViewController()
+        vc.view.addSubview(self.textView)
+        self.present(vc, animated: true, completion: nil)
+
     }
 }
 
 // MARK: 点击事件
 private extension QJComposeViewController {
     @objc func rightBarButtonItemDidClicked(){
-        
+       
     }
 }
 
