@@ -188,14 +188,26 @@ private extension QJPhotoPreviewCell {
         // 添加控件
         contentView.addSubview(scrollView)
         scrollView.backgroundColor = .clear
+        scrollView.maximumZoomScale = 2.5
+        scrollView.minimumZoomScale = 1.0
+        scrollView.autoresizingMask = []
 
         scrollView.addSubview(imageView)
         imageView.layer.cornerRadius = 4
         imageView.layer.masksToBounds = true
         imageView.isUserInteractionEnabled = true
         // 添加点击事件
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction(tapGesture:)))
-        imageView.addGestureRecognizer(tapGesture)
+        // 一次点击事件
+        let tapOneGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction(tapGesture:)))
+        tapOneGesture.numberOfTapsRequired = 1
+        imageView.addGestureRecognizer(tapOneGesture)
+        // 两次点击事件
+        let tapTwoGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction(tapGesture:)))
+        tapTwoGesture.numberOfTapsRequired = 2
+        imageView.addGestureRecognizer(tapTwoGesture)
+        // 添加优先级
+        tapOneGesture.require(toFail: tapTwoGesture);
+
         
         contentView.addSubview(progressView)
         progressView.backgroundColor = .clear
@@ -255,8 +267,28 @@ extension QJPhotoPreviewCell {
             Log("点击了一次")
             delegate?.cellDidClicked(cell: self)
         } else {
+            
+            if (self.scrollView.zoomScale != 1.0) {
+                imageScale(scale:1.0 , withCenter:tapGesture.location(in : tapGesture.view!));
+            }else
+            {
+                imageScale(scale:2.5 , withCenter:tapGesture.location(in : tapGesture.view!));
+            }
+            
             Log("点击了多次")
         }
+    }
+    /** 图片缩放 */
+    private func imageScale(scale:CGFloat , withCenter loction:CGPoint) {
+        let zoomFrame = zoomRect(scale: scale, withCenter: loction)
+        scrollView.zoom(to: zoomFrame, animated: true);
+    }
+    private func zoomRect(scale:CGFloat , withCenter center:CGPoint) -> CGRect{
+        let height = self.scrollView.frame.size.height * scale;
+        let width  = self.scrollView.frame.size.width  * scale;
+        let x    = center.x - (width  * 0.5);
+        let y    = center.y - (height * 0.5);
+        return CGRect(x: x, y: y, width: width, height: height);
     }
 }
 
