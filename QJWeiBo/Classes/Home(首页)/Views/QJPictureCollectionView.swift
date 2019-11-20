@@ -9,6 +9,10 @@
 import UIKit
 import SDWebImage
 
+/// 点击 home cell的图片预览通知
+let homeCellPicturePreviewNotification:NSNotification.Name = NSNotification.Name(rawValue: "HomeCellPicturePreviewNotification")
+
+
 class QJPictureCollectionView: UICollectionView {
     /// 每个 item 间隔
     private let itemSpacing:CGFloat = 5
@@ -89,6 +93,11 @@ extension QJPictureCollectionView : UICollectionViewDataSource , UICollectionVie
         }
         cell?.imageURL = self.pictureUrls?[indexPath.row]
         return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let info = ["pictureUrls":pictureUrls!, "indexPath":indexPath] as [String : Any]
+        NotificationCenter.default.post(Notification(name: homeCellPicturePreviewNotification, object: nil, userInfo: info))
     }
 }
 

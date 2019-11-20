@@ -30,12 +30,20 @@ class QJHomeViewController: QJBaseViewController {
         super.viewDidLoad()
 
         setUpUI()
+        setUpNotification()
     }
-
+    
+    // MARK: 添加通知
+    private func setUpNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(showPicturePreview), name: homeCellPicturePreviewNotification, object: nil)
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: homeCellPicturePreviewNotification, object: nil)
+    }
 }
 
 // MARK: 获取网络数据
-extension QJHomeViewController{
+private extension QJHomeViewController{
     /// 下拉加载 首页最新的微博数据
     @objc private func  loadNewStatuses(){
         loadStatuses(isLodNew: true)
@@ -248,7 +256,13 @@ private extension QJHomeViewController  {
     @objc func titleViewDidClicked() {
         showOrHiddenPopView()
     }
-    
+    /// 显示图片预览
+    @objc func showPicturePreview(noti:Notification){
+        
+        let info = noti.userInfo
+        let previewVc = QJPhotoPreviewVc(pictureUrls: info?["pictureUrls"] as? [NSURL], indexPath: info?["indexPath"] as? NSIndexPath)
+        self.present(previewVc, animated: true, completion: nil)
+    }
 }
 
 // MARK: UITableViewDataSource & UITableViewDelegate
