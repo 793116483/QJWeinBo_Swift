@@ -217,6 +217,8 @@ private extension QJPhotoPreviewCell {
     static let space:CGFloat = 15
     
     func dealSetPictureUrl(smallURL:NSURL?) {
+        // 先灰复原先的缩放
+        imageView.zoom(scale: 1.0, zoomCenter: CGPoint.zero)
         guard let smallURL = smallURL else {
             return
         }
