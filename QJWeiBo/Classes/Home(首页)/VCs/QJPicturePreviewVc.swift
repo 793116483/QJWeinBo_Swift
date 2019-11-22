@@ -170,7 +170,7 @@ class QJPhotoPreviewCell: UICollectionViewCell {
     weak var delegate:QJPhotoPreviewCellDelegate?
     
     private let scrollView = UIScrollView()
-    let imageView = UIImageView()
+    let imageView = QJImageView(frame: CGRect.zero)
     private let progressView = QJProgressView()
     
     override init(frame: CGRect) {
@@ -188,14 +188,13 @@ private extension QJPhotoPreviewCell {
         // 添加控件
         contentView.addSubview(scrollView)
         scrollView.backgroundColor = .clear
-        scrollView.maximumZoomScale = 2.5
-        scrollView.minimumZoomScale = 1.0
-        scrollView.autoresizingMask = []
 
         scrollView.addSubview(imageView)
         imageView.layer.cornerRadius = 4
         imageView.layer.masksToBounds = true
         imageView.isUserInteractionEnabled = true
+        imageView.maximumZoomScale = 2.5
+        imageView.minimumZoomScale = 1.0
         // 添加点击事件
         // 一次点击事件
         let tapOneGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction(tapGesture:)))
@@ -260,35 +259,34 @@ private extension QJPhotoPreviewCell {
     
 }
 
-// MARK: 点击事件
-extension QJPhotoPreviewCell {
+// MARK: 图片缩放 功能
+extension QJPhotoPreviewCell  {
     @objc func tapAction(tapGesture:UITapGestureRecognizer) {
         if tapGesture.numberOfTapsRequired == 1 {
             Log("点击了一次")
             delegate?.cellDidClicked(cell: self)
         } else {
             
-            if (self.scrollView.zoomScale != 1.0) {
-                imageScale(scale:1.0 , withCenter:tapGesture.location(in : tapGesture.view!));
-            }else
-            {
-                imageScale(scale:2.5 , withCenter:tapGesture.location(in : tapGesture.view!));
+            if (self.imageView.zoomScale != 1.0) {
+//                imageView.origin = CGPoint(x: imageView.origin.x - scrollView.contentOffset.x , y: imageView.origin.y - scrollView.contentOffset.y)
+//                scrollView.contentOffset = CGPoint.zero
+                imageView.zoom(scale: 1.0, zoomCenter: tapGesture.location(in: tapGesture.view!))
+//                scrollView.contentSize = imageView.size
+            } else {
+                Log(NSValue(cgRect: imageView.frame))
+                let startOrigin = imageView.frame.origin
+                
+                imageView.zoom(scale:2.5 , zoomCenter:tapGesture.location(in : tapGesture.view!));
+//                scrollView.contentSize = imageView.size
+//                let offset = CGPoint(x: startOrigin.x - imageView.origin.x , y: startOrigin.y - imageView.origin.y)
+//                imageView.origin = startOrigin
+//                scrollView.contentOffset = offset
+//                Log(NSValue(cgRect: imageView.frame))
+
             }
             
             Log("点击了多次")
         }
-    }
-    /** 图片缩放 */
-    private func imageScale(scale:CGFloat , withCenter loction:CGPoint) {
-        let zoomFrame = zoomRect(scale: scale, withCenter: loction)
-        scrollView.zoom(to: zoomFrame, animated: true);
-    }
-    private func zoomRect(scale:CGFloat , withCenter center:CGPoint) -> CGRect{
-        let height = self.scrollView.frame.size.height * scale;
-        let width  = self.scrollView.frame.size.width  * scale;
-        let x    = center.x - (width  * 0.5);
-        let y    = center.y - (height * 0.5);
-        return CGRect(x: x, y: y, width: width, height: height);
     }
 }
 

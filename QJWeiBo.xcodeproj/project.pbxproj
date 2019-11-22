@@ -15,6 +15,7 @@
 		F20349A12377E9290087A90C /* QJOauthNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20349A02377E9290087A90C /* QJOauthNetworkTool.swift */; };
 		F20349A42377F46C0087A90C /* QJAccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20349A32377F46C0087A90C /* QJAccessTokenModel.swift */; };
 		F20349A82378015A0087A90C /* QJUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20349A72378015A0087A90C /* QJUserInfoModel.swift */; };
+		F20F81F72386F9930092C7BD /* QJImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20F81F62386F9930092C7BD /* QJImageView.swift */; };
 		F20FCC8A237EE90500E2132A /* QJComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20FCC89237EE90500E2132A /* QJComposeViewController.swift */; };
 		F22435A5237BFF5E0008CE47 /* NSString+QJExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22435A4237BFF5E0008CE47 /* NSString+QJExtension.swift */; };
 		F22435A7237C0FF40008CE47 /* QJHomeCellBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F22435A6237C0FF40008CE47 /* QJHomeCellBottomView.xib */; };
@@ -90,6 +91,7 @@
 		F20349A02377E9290087A90C /* QJOauthNetworkTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJOauthNetworkTool.swift; sourceTree = "<group>"; };
 		F20349A32377F46C0087A90C /* QJAccessTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJAccessTokenModel.swift; sourceTree = "<group>"; };
 		F20349A72378015A0087A90C /* QJUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJUserInfoModel.swift; sourceTree = "<group>"; };
+		F20F81F62386F9930092C7BD /* QJImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJImageView.swift; sourceTree = "<group>"; };
 		F20FCC89237EE90500E2132A /* QJComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJComposeViewController.swift; sourceTree = "<group>"; };
 		F22435A4237BFF5E0008CE47 /* NSString+QJExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+QJExtension.swift"; sourceTree = "<group>"; };
 		F22435A6237C0FF40008CE47 /* QJHomeCellBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QJHomeCellBottomView.xib; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 				F239C9CC23745F1200AE01BC /* QJPublic.swift */,
 				F203499E2377D0610087A90C /* Common.swift */,
 				F2D3CF1B237FC3B400AA2071 /* QJTextView.swift */,
+				F20F81F62386F9930092C7BD /* QJImageView.swift */,
 				F22E9F8223838BC00020658C /* QJEmoji */,
 			);
 			path = Public;
@@ -776,6 +779,7 @@
 				F239C9CD23745F1200AE01BC /* QJPublic.swift in Sources */,
 				F239C9CA2373F6D100AE01BC /* UIView+QJFrame.swift in Sources */,
 				F20349A82378015A0087A90C /* QJUserInfoModel.swift in Sources */,
+				F20F81F72386F9930092C7BD /* QJImageView.swift in Sources */,
 				F22435B7237C63D10008CE47 /* QJProfileViewController.swift in Sources */,
 				F239C9842373C11700AE01BC /* QJWeiBo.xcdatamodeld in Sources */,
 				F22435A9237C59CD0008CE47 /* QJButton.swift in Sources */,
