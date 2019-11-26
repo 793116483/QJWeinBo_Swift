@@ -26,6 +26,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    // 在其他应用打开 weibo://host/path?query , weibo是自己配的 URL Schemes 协议
+    // 从其他app跳转到当前app时，会调用该代理方法 , ios 9.0以后才会调这个方法
+    // 如果从当前app 跳转到 其他app , ios9.0以后的 需要在info.plist添加 Schemes 到白名单 ，该Schemes是已经配制到其他app中
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+     
+        print("open url : \(url) , options: \(options)")
+        // 协议
+        let scheme = url.scheme
+        // 主机地址
+        guard let host = url.host else {return false }
+        // 路径
+        let path = url.path
+        // 传的参数 查询
+        let query = url.query
+        
+        if host == "myWeiboHomePage" {
+            print("跳转到我的微博首页")
+        }
+        
+        return true
+    }
+    // ios 9.0 以前会调用这个方法
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        
+        print("handleOpen url : \(url)")
+
+        return true
+    }
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         
     }
